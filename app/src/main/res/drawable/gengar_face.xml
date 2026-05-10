@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Body -->
+    <path
+        android:pathData="M100,100 m-85,0 a85,85 0 1,0 170,0 a85,85 0 1,0 -170,0"
+        android:fillColor="#0D0D12" />
+
+    <!-- Mắt trái - tam giác đỏ -->
+    <path
+        android:pathData="M42,72 L68,48 L82,78 Z"
+        android:fillColor="#E8192C" />
+    <!-- Pupil trái -->
+    <path
+        android:pathData="M62,68 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0"
+        android:fillColor="#7C3AED" />
+    <!-- Highlight trái -->
+    <path
+        android:pathData="M58,64 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Mắt phải - tam giác đỏ -->
+    <path
+        android:pathData="M158,72 L132,48 L118,78 Z"
+        android:fillColor="#E8192C" />
+    <!-- Pupil phải -->
+    <path
+        android:pathData="M130,68 m-7,0 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0"
+        android:fillColor="#7C3AED" />
+    <!-- Highlight phải -->
+    <path
+        android:pathData="M126,64 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Outline mắt trái -->
+    <path
+        android:pathData="M42,72 L68,48 L82,78 Z"
+        android:fillColor="#00000000"
+        android:strokeColor="#0A0A0A"
+        android:strokeWidth="3" />
+
+    <!-- Outline mắt phải -->
+    <path
+        android:pathData="M158,72 L132,48 L118,78 Z"
+        android:fillColor="#00000000"
+        android:strokeColor="#0A0A0A"
+        android:strokeWidth="3" />
+
+    <!-- Miệng outline đen -->
+    <path
+        android:pathData="M28,108 Q100,160 172,108 L172,128 Q100,185 28,128 Z"
+        android:fillColor="#0A0A0A" />
+
+    <!-- Miệng trắng -->
+    <path
+        android:pathData="M32,110 Q100,158 168,110 L168,126 Q100,178 32,126 Z"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Răng - đường dọc tím -->
+    <path android:pathData="M60,115 L58,168" android:strokeColor="#9966CC" android:strokeWidth="2.5" android:fillColor="#00000000"/>
+    <path android:pathData="M76,112 L75,172" android:strokeColor="#9966CC" android:strokeWidth="2.5" android:fillColor="#00000000"/>
+    <path android:pathData="M92,110 L92,175" android:strokeColor="#9966CC" android:strokeWidth="2.5" android:fillColor="#00000000"/>
+    <path android:pathData="M108,110 L108,175" android:strokeColor="#9966CC" android:strokeWidth="2.5" android:fillColor="#00000000"/>
+    <path android:pathData="M124,112 L125,172" android:strokeColor="#9966CC" android:strokeWidth="2.5" android:fillColor="#00000000"/>
+    <path android:pathData="M140,115 L142,168" android:strokeColor="#9966CC" android:strokeWidth="2.5" android:fillColor="#00000000"/>
+
+</vector>

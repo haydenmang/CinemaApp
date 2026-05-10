@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bg_dark">#050505</color>
+    <color name="primary_purple">#C0392B</color>
+    <color name="accent_gold">#E74C3C</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3FFFFFF</color>
+    <color name="error">#FF6B6B</color>
+    <color name="stroke_gold">#C0392B</color>
+    <color name="bg_input">#050505</color>
+    <color name="bg_card">#050505</color>
 </resources>

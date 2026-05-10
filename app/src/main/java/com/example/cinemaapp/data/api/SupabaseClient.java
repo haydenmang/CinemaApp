@@ -1,4 +1,5 @@
 package com.example.cinemaapp.data.api;
+import com.google.gson.GsonBuilder;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -10,6 +11,8 @@ import java.io.IOException;
 public class SupabaseClient {
     private static Retrofit retrofit = null;
 
+    public static void reset() { retrofit = null; }
+
     public static Retrofit getClient() {
         if (retrofit == null) {
             // Cấu hình OkHttp để tự động nhét API Key vào mọi yêu cầu gửi lên Supabase
@@ -17,8 +20,10 @@ public class SupabaseClient {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
                     Request newRequest = chain.request().newBuilder()
-                            .addHeader("apikey", SupabaseConfig.API_KEY) // Chìa khóa báo danh
-                            .addHeader("Authorization", "Bearer " + SupabaseConfig.API_KEY) // Quyền truy cập
+                            .addHeader("apikey", SupabaseConfig.API_KEY)
+                            .addHeader("Authorization", "Bearer " + SupabaseConfig.API_KEY)
+                            .addHeader("Content-Type", "application/json")
+                            .addHeader("Prefer", "return=minimal")
                             .build();
                     return chain.proceed(newRequest);
                 }
@@ -28,7 +33,9 @@ public class SupabaseClient {
             retrofit = new Retrofit.Builder()
                     .baseUrl(SupabaseConfig.BASE_URL)
                     .client(client)
-                    .addConverterFactory(GsonConverterFactory.create()) // Tự động chuyển JSON thành Object Java
+                    .addConverterFactory(GsonConverterFactory.create(
+                        new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()
+                    ))
                     .build();
         }
         return retrofit;
