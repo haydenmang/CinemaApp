@@ -15,6 +15,8 @@ public interface ApiService {
     @GET("movies")
     Call<List<Movie>> getMovieById(@Query("id") String idFilter); // id=eq.1
 
+
+
     // ===== USERS =====
     @GET("users")
     Call<List<User>> getUserByEmail(@Query("email") String emailFilter);
