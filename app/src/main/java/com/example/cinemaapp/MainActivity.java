@@ -20,5 +20,11 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Test màn hình chọn ghế
+        startActivity(new android.content.Intent(this, SeatSelectionActivity.class)
+            .putExtra("movie_title", "Avengers: Endgame")
+            .putExtra("showtime", "19:30"));
+        finish();
     }
 }
