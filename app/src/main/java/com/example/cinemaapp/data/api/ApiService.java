@@ -10,7 +10,10 @@ public interface ApiService {
 
     // ===== MOVIES =====
     @GET("movies")
-    Call<List<Movie>> getMovies();
+    Call<List<Movie>> getMovies(
+            @Query("order") String order,
+            @Query("limit") int limit
+    );
 
     @GET("movies")
     Call<List<Movie>> getMovieById(@Query("id") String idFilter); // id=eq.1
