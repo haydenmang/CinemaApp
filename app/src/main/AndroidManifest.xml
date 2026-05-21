@@ -14,23 +14,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CinemaApp">
         <activity
+            android:name=".MyTicketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MovieListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingActivity"
+            android:exported="false"
+            />
+        <activity
             android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.CinemaApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
