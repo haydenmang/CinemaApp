@@ -36,6 +36,9 @@ public interface ApiService {
     @GET("rooms")
     Call<List<Room>> getRoomsByCinema(@Query("cinema_id") String cinemaIdFilter);
 
+    @GET("rooms")
+    Call<List<Room>> getAllRooms();
+
     // ===== SEATS =====
     @GET("seats")
     Call<List<Seat>> getSeatsByRoom(@Query("room_id") String roomIdFilter);
@@ -43,6 +46,9 @@ public interface ApiService {
     // ===== SHOWTIMES =====
     @GET("showtimes")
     Call<List<Showtime>> getShowtimesByMovie(@Query("movie_id") String movieIdFilter);
+
+    @GET("showtimes")
+    Call<List<Showtime>> getAllShowtimes();
 
     @GET("showtimes")
     Call<List<Showtime>> getShowtimesByRoom(@Query("room_id") String roomIdFilter);
