@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_main_screen"
     android:fitsSystemWindows="false"
-    tools:context=".MainActivity">
+    tools:context=".ui.home.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_root_layout"

@@ -1,4 +1,4 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui.home;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -21,6 +21,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.cinemaapp.R;
 import com.example.cinemaapp.data.repository.MovieCatalogRepository;
 import com.example.cinemaapp.ui.movie.adapter.BannerAdapter;
 import com.example.cinemaapp.ui.movie.adapter.MoviePagerAdapter;
