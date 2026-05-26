@@ -3,12 +3,31 @@ package com.example.cinemaapp.data.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Showtime {
-    public int id;
+    @SerializedName("id")
+    private int id;
+
     @SerializedName("movie_id")
-    public int movieId;
+    private int movieId;
+
     @SerializedName("room_id")
-    public int roomId;
+    private int roomId;
+
     @SerializedName("start_time")
-    public String startTime;
-    public double price;
+    private String startTime;
+
+    @SerializedName("price")
+    private double price;
+
+    // Getters và Setters
+    public int getId() { return id; }
+    public int getMovieId() { return movieId; }
+    public int getRoomId() { return roomId; }
+    public String getStartTime() { return startTime; }
+    public double getPrice() { return price; }
+
+    public void setId(int id) { this.id = id; }
+    public void setMovieId(int movieId) { this.movieId = movieId; }
+    public void setRoomId(int roomId) { this.roomId = roomId; }
+    public void setStartTime(String startTime) { this.startTime = startTime; }
+    public void setPrice(double price) { this.price = price; }
 }

@@ -33,10 +33,10 @@ public class SupabaseClient {
             retrofit = new Retrofit.Builder()
                     .baseUrl(SupabaseConfig.BASE_URL)
                     .client(client)
-                    .addConverterFactory(GsonConverterFactory.create(
-                        new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()
-                    ))
+                    .addConverterFactory(GsonConverterFactory.create())
                     .build();
+
+
         }
         return retrofit;
     }

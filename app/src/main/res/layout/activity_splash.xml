@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_overlay" />
 
-    <com.example.cinemaapp.ui.ParticleView
+    <com.example.cinemaapp.ui.movie.widget.ParticleView
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

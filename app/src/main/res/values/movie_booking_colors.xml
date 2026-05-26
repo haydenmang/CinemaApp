@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="movie_bg_main">#121212</color>
+    <color name="movie_bg_card">#1E1E1E</color>
+    <color name="movie_bg_poster_surface">#0E1428</color>
+    <color name="movie_brand_accent">#E50914</color>
+    <color name="movie_app_bar_bg">#141C38</color>
+    <color name="movie_btn_book_start">#D8CDB4</color>
+    <color name="movie_btn_book_end">#A89572</color>
+    <color name="movie_btn_book_text">#1A1520</color>
+    <color name="movie_nav_active">#D8CDB4</color>
+    <color name="movie_nav_inactive">#5C6478</color>
+    <color name="movie_nav_indicator">#33D8CDB4</color>
+    <color name="movie_text_white">#FFFFFF</color>
+
+    <!-- Aliases for booking drawables (no conflict with CinemaApp) -->
+    <color name="bg_poster_surface">#0E1428</color>
+    <color name="brand_accent">#E50914</color>
+    <color name="btn_book_start">#D8CDB4</color>
+    <color name="btn_book_end">#A89572</color>
+    <color name="btn_book_text">#1A1520</color>
+    <color name="nav_active">#D8CDB4</color>
+    <color name="nav_inactive">#5C6478</color>
+    <color name="nav_indicator">#33D8CDB4</color>
+    <color name="text_white">#FFFFFF</color>
+</resources>

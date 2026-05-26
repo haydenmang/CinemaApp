@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movie_home_title">CINEMA APP</string>
+
+    <string name="movie_nav_home">Trang chủ</string>
+    <string name="movie_nav_movies">Phim</string>
+    <string name="movie_nav_theaters">Rạp</string>
+    <string name="movie_nav_profile">Tài khoản</string>
+
+    <string name="movie_detail_synopsis">Nội dung phim</string>
+    <string name="movie_detail_read_more">Xem thêm</string>
+    <string name="movie_detail_read_less">Ẩn bớt</string>
+    <string name="movie_detail_genre">Thể loại</string>
+    <string name="movie_detail_director">Đạo diễn</string>
+    <string name="movie_detail_cast">Diễn viên</string>
+    <string name="movie_detail_rating">Đánh giá</string>
+    <string name="movie_rating_star">★ %1$s</string>
+    <string name="movie_detail_book_ticket">ĐẶT VÉ</string>
+    <string name="movie_detail_watch_trailer">Xem trailer</string>
+    <string name="movie_trailer_unavailable">Không mở được trailer cho phim này</string>
+    <string name="movie_trailer_embed_blocked">Trailer không phát được trong app. Hãy dùng link YouTube trực tiếp trên Supabase.</string>
+    <string name="movie_detail_back">Quay lại</string>
+    <string name="movie_detail_placeholder">—</string>
+</resources>

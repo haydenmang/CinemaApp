@@ -1,4 +1,4 @@
-package com.example.cinemaapp.ui;
+package com.example.cinemaapp.ui.movie.widget;
 
 import android.content.Context;
 import android.graphics.Canvas;

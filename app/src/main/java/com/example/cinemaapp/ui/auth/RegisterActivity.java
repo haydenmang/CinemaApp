@@ -1,4 +1,4 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.cinemaapp.R;
 import com.example.cinemaapp.data.model.User;
 import com.example.cinemaapp.service.AuthService;
 import com.google.android.material.textfield.TextInputEditText;
