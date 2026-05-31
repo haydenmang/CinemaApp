@@ -43,13 +43,28 @@ public interface ApiService {
     @GET("rooms")
     Call<List<Room>> getRoomsByCinema(@Query("cinema_id") String cinemaIdFilter);
 
+    @GET("rooms")
+    Call<List<Room>> getAllRooms();
+
     // ===== SEATS =====
     @GET("seats")
     Call<List<Seat>> getSeatsByRoom(@Query("room_id") String roomIdFilter);
 
     // ===== SHOWTIMES =====
     @GET("showtimes")
+    Call<List<Showtime>> getShowtimesByRooms(@Query(value = "room_id", encoded = true) String roomIdsFilter);
+
+    @GET("showtimes")
+    Call<List<Showtime>> getShowtimesByRoomsAndDate(
+            @Query(value = "room_id", encoded = true) String roomIdsFilter,
+            @Query("start_time") String gteDate,
+            @Query("start_time") String lteDate
+    );
+    @GET("showtimes")
     Call<List<Showtime>> getShowtimesByMovie(@Query("movie_id") String movieIdFilter);
+
+    @GET("showtimes")
+    Call<List<Showtime>> getAllShowtimes();
 
     @GET("showtimes")
     Call<List<Showtime>> getShowtimesByRoom(@Query("room_id") String roomIdFilter);

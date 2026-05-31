@@ -26,18 +26,18 @@ public class SplashActivity extends AppCompatActivity {
                 .scaleX(1.15f).scaleY(1.15f)
                 .setDuration(600)
                 .withEndAction(() ->
-                    ivLogo.animate().scaleX(1f).scaleY(1f).setDuration(200).start()
+                        ivLogo.animate().scaleX(1f).scaleY(1f).setDuration(200).start()
                 ).start();
 
         // App name fade in sau 300ms
         tvAppName.postDelayed(() ->
-            tvAppName.animate().alpha(1f).translationYBy(-20f).setDuration(500).start()
-        , 300);
+                        tvAppName.animate().alpha(1f).translationYBy(-20f).setDuration(500).start()
+                , 300);
 
         // Tagline fade in sau 600ms
         tvTagline.postDelayed(() ->
-            tvTagline.animate().alpha(1f).translationYBy(-20f).setDuration(500).start()
-        , 600);
+                        tvTagline.animate().alpha(1f).translationYBy(-20f).setDuration(500).start()
+                , 600);
 
         // Chuyển sang LoginActivity sau 2.5 giây
         ivLogo.postDelayed(() -> {
