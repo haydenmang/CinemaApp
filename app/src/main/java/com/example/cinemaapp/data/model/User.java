@@ -22,4 +22,20 @@ public class User {
     @SerializedName("created_at")
     @Expose(serialize = false, deserialize = true)
     public String createdAt;
+
+    @Expose
+    public String dob;
+
+    @Expose
+    public String gender;
+
+    @SerializedName("favorite_cinema")
+    @Expose
+    public String favoriteCinema;
+
+    @Expose
+    public String province;
+
+    @Expose
+    public String district;
 }

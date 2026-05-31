@@ -218,7 +218,8 @@ public class MainActivity extends AppCompatActivity {
             } else if (id == R.id.nav_theaters) {
                 Toast.makeText(this, "Chuyển đến màn hình Rạp chiếu", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_profile) {
-                Toast.makeText(this, "Chuyển đến màn hình Tài Khoản", Toast.LENGTH_SHORT).show();
+                android.content.Intent intent = new android.content.Intent(MainActivity.this, com.example.cinemaapp.ProfileActivity.class);
+                startActivity(intent);
             }
             return true;
         });
@@ -409,9 +410,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (bottomNavigationView != null
-                && bottomNavigationView.getSelectedItemId() == R.id.nav_home) {
-            resumeAutoScrolls();
+        if (bottomNavigationView != null) {
+            bottomNavigationView.getMenu().findItem(R.id.nav_home).setChecked(true);
+            if (bottomNavigationView.getSelectedItemId() == R.id.nav_home) {
+                resumeAutoScrolls();
+            }
         }
     }
 }

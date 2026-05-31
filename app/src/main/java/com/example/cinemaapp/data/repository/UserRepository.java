@@ -12,6 +12,7 @@ import retrofit2.Response;
 
 public class UserRepository {
 
+    public static User currentUser;
     private final ApiService api;
 
     public UserRepository() {
@@ -108,6 +109,24 @@ public class UserRepository {
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 android.util.Log.e("REGISTER", "Failure: " + t.getMessage());
+                callback.onError(t.getMessage());
+            }
+        });
+    }
+    // Cập nhật thông tin user
+    public void updateUser(User user, Callback1<Boolean> callback) {
+        api.updateUser("eq." + user.id, user).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    callback.onResult(true);
+                } else {
+                    callback.onError("Lỗi cập nhật: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
                 callback.onError(t.getMessage());
             }
         });

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="#FFFFFF"
+    app:cardBackgroundColor="#1A2444"
     app:cardCornerRadius="16dp"
     app:cardElevation="2dp"
     android:layout_marginHorizontal="16dp"
@@ -35,7 +35,7 @@
                     android:layout_height="match_parent"
                     android:src="@android:drawable/ic_menu_gallery"
                     android:scaleType="centerCrop"
-                    android:background="#E0E0E0"/>
+                    android:background="#2B3A67"/>
             </androidx.cardview.widget.CardView>
 
             <!-- Text Info -->
@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Lật Mặt 7: Một Điều Ước"
-                    android:textColor="#202124"
+                    android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     android:textSize="16sp"/>
 
@@ -59,7 +59,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="CGV Vincom Center"
-                    android:textColor="#5F6368"
+                    android:textColor="#A2ADBB"
                     android:textSize="14sp"
                     android:layout_marginTop="6dp"/>
 
@@ -79,14 +79,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Giờ chiếu"
-                            android:textColor="#9E9E9E"
+                            android:textColor="#8A95A5"
                             android:textSize="12sp"/>
                         <TextView
                             android:id="@+id/txtTicketTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="19:00"
-                            android:textColor="#202124"
+                            android:textColor="#FFFFFF"
                             android:textSize="14sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -100,14 +100,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Ngày"
-                            android:textColor="#9E9E9E"
+                            android:textColor="#8A95A5"
                             android:textSize="12sp"/>
                         <TextView
                             android:id="@+id/txtTicketDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20/05/2026"
-                            android:textColor="#202124"
+                            android:textColor="#FFFFFF"
                             android:textSize="14sp"
                             android:textStyle="bold"/>
                     </LinearLayout>
@@ -126,12 +126,12 @@
                 android:layout_height="1dp"
                 android:layout_centerInParent="true"
                 android:layout_marginHorizontal="20dp"
-                android:background="#E0E0E0"/>
+                android:background="#2B3A67"/>
 
             <View
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="#F7F9FC"
+                android:background="@drawable/bg_main_screen"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="-10dp"
                 app:cornerRadius="10dp"/>
@@ -139,7 +139,7 @@
             <View
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:background="#F7F9FC"
+                android:background="@drawable/bg_main_screen"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="-10dp"
                 app:cornerRadius="10dp"/>
@@ -162,7 +162,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ghế"
-                    android:textColor="#9E9E9E"
+                    android:textColor="#8A95A5"
                     android:textSize="12sp"/>
                 <TextView
                     android:id="@+id/txtTicketSeat"
@@ -174,13 +174,17 @@
                     android:textStyle="bold"/>
             </LinearLayout>
 
-            <TextView
+            <com.google.android.material.button.MaterialButton
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:text="MỞ MÃ QR"
-                android:textColor="#1A73E8"
                 android:textSize="12sp"
-                android:textStyle="bold"/>
+                android:background="@drawable/bg_btn_book"
+                app:backgroundTint="@null"
+                android:textColor="@color/btn_book_text"
+                android:insetBottom="0dp"
+                android:insetTop="0dp"
+                app:cornerRadius="16dp" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

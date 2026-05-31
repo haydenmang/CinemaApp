@@ -31,6 +31,10 @@ public interface ApiService {
     @Headers("Content-Type: application/json")
     Call<Void> createUser(@Body User user);
 
+    @PATCH("users")
+    @Headers("Content-Type: application/json")
+    Call<Void> updateUser(@Query("id") String idFilter, @Body User user);
+
     // ===== CINEMAS =====
     @GET("cinemas")
     Call<List<Cinema>> getCinemas();

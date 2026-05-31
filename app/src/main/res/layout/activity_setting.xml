@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F9FC"
+    android:background="@drawable/bg_main_screen"
     tools:context=".SettingActivity">
 
     <!-- Top App Bar / Title -->
@@ -13,7 +13,7 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/bg_app_bar"
         android:elevation="4dp"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -22,8 +22,8 @@
             android:id="@+id/btnBack"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@android:drawable/ic_menu_revert"
-            app:tint="#202124"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="#FFFFFF"
             android:layout_marginStart="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cài đặt tài khoản"
-            android:textColor="#202124"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thông tin tài khoản"
-                android:textColor="#202124"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp"/>
@@ -69,7 +69,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="#1A2444"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
                 android:layout_marginBottom="24dp">
@@ -97,59 +97,67 @@
                     </androidx.cardview.widget.CardView>
 
                     <!-- Họ tên -->
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout android:hint="Họ tên" app:hintTextColor="#FFFFFF" android:textColorHint="#A2ADBB"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
+                        app:boxBackgroundColor="#2B3A67"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                         <com.google.android.material.textfield.TextInputEditText
+                            android:textColor="@color/input_text_color"
                             android:id="@+id/edtName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Họ tên"
+
                             android:text="Đinh Hải Đăng"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Ngày sinh -->
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout android:hint="Ngày sinh" app:hintTextColor="#FFFFFF" android:textColorHint="#A2ADBB"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
+                        app:boxBackgroundColor="#2B3A67"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                         <com.google.android.material.textfield.TextInputEditText
+                            android:textColor="@color/input_text_color"
                             android:id="@+id/edtDob"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Ngày sinh"
+
                             android:text="12/05/2005"
                             android:inputType="date"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Giới tính -->
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout android:hint="Giới tính" app:hintTextColor="#FFFFFF" android:textColorHint="#A2ADBB"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
+                        app:boxBackgroundColor="#2B3A67"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
                         <AutoCompleteTextView
+                            android:textColor="@color/input_text_color"
                             android:id="@+id/spinGender"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Giới tính"
+
                             android:text="Nam"
                             android:inputType="none"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Rạp yêu thích -->
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout android:hint="Rạp yêu thích" app:hintTextColor="#FFFFFF" android:textColorHint="#A2ADBB"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:boxBackgroundColor="#2B3A67"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
                         <AutoCompleteTextView
+                            android:textColor="@color/input_text_color"
                             android:id="@+id/spinCinema"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Rạp yêu thích"
+
                             android:text="CGV Vincom Center"
                             android:inputType="none"/>
                     </com.google.android.material.textfield.TextInputLayout>
@@ -162,7 +170,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thông tin liên hệ"
-                android:textColor="#202124"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp"/>
@@ -170,7 +178,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="#1A2444"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
                 android:layout_marginBottom="24dp">
@@ -182,45 +190,51 @@
                     android:padding="20dp">
 
                     <!-- Số điện thoại -->
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout android:hint="Số điện thoại" app:hintTextColor="#FFFFFF" android:textColorHint="#A2ADBB" 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
+                        app:boxBackgroundColor="#2B3A67"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                         <com.google.android.material.textfield.TextInputEditText
+                            android:textColor="@color/input_text_color"
                             android:id="@+id/edtPhone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Số điện thoại"
+                            
                             android:text="0987390854"
                             android:inputType="phone"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Tỉnh/Thành phố -->
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout android:hint="Tỉnh/Thành phố" app:hintTextColor="#FFFFFF" android:textColorHint="#A2ADBB" 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
+                        app:boxBackgroundColor="#2B3A67"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
                         <AutoCompleteTextView
+                            android:textColor="@color/input_text_color"
                             android:id="@+id/spinProvince"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Tỉnh/Thành phố"
+                            
                             android:text="Hà Nội"
                             android:inputType="none"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Quận/Huyện -->
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout android:hint="Quận/Huyện" app:hintTextColor="#FFFFFF" android:textColorHint="#A2ADBB" 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:boxBackgroundColor="#2B3A67"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
                         <AutoCompleteTextView
+                            android:textColor="@color/input_text_color"
                             android:id="@+id/spinDistrict"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Quận/Huyện"
+                            
                             android:text="Quận Cầu Giấy"
                             android:inputType="none"/>
                     </com.google.android.material.textfield.TextInputLayout>
@@ -231,8 +245,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:text="Cập nhật thông tin"
-                        android:textColor="#FFFFFF"
-                        app:backgroundTint="#DE3716"
+                        android:textColor="@color/btn_book_text"
+                        android:background="@drawable/bg_btn_book"
+                        app:backgroundTint="@null"
                         app:cornerRadius="12dp"
                         android:layout_marginTop="24dp"/>
 
@@ -244,7 +259,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bảo mật"
-                android:textColor="#202124"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp"/>
@@ -252,7 +267,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="#1A2444"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
                 android:layout_marginBottom="24dp">
@@ -264,46 +279,52 @@
                     android:padding="20dp">
 
                     <!-- Mật khẩu hiện tại -->
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout android:hint="Mật khẩu hiện tại" app:hintTextColor="#FFFFFF" android:textColorHint="#A2ADBB" 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
                         app:endIconMode="password_toggle"
+                        app:boxBackgroundColor="#2B3A67"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                         <com.google.android.material.textfield.TextInputEditText
+                            android:textColor="@color/input_text_color"
                             android:id="@+id/edtCurrentPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Mật khẩu hiện tại"
+                            
                             android:inputType="textPassword"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Mật khẩu mới -->
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout android:hint="Mật khẩu mới" app:hintTextColor="#FFFFFF" android:textColorHint="#A2ADBB" 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
                         app:endIconMode="password_toggle"
+                        app:boxBackgroundColor="#2B3A67"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                         <com.google.android.material.textfield.TextInputEditText
+                            android:textColor="@color/input_text_color"
                             android:id="@+id/edtNewPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Mật khẩu mới"
+                            
                             android:inputType="textPassword"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <!-- Xác nhận mật khẩu mới -->
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.material.textfield.TextInputLayout android:hint="Xác nhận mật khẩu mới" app:hintTextColor="#FFFFFF" android:textColorHint="#A2ADBB" 
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:endIconMode="password_toggle"
+                        app:boxBackgroundColor="#2B3A67"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                         <com.google.android.material.textfield.TextInputEditText
+                            android:textColor="@color/input_text_color"
                             android:id="@+id/edtConfirmPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Xác nhận mật khẩu mới"
+                            
                             android:inputType="textPassword"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -313,8 +334,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:text="Đổi mật khẩu"
-                        android:textColor="#FFF"
-                        app:backgroundTint="#DE3716"
+                        android:textColor="@color/btn_book_text"
+                        android:background="@drawable/bg_btn_book"
+                        app:backgroundTint="@null"
                         app:cornerRadius="12dp"
                         android:layout_marginTop="24dp"
                         />
@@ -327,7 +349,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tùy chọn"
-                android:textColor="#202124"
+                android:textColor="#FFFFFF"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="12dp"/>
@@ -335,7 +357,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="#1A2444"
                 app:cardCornerRadius="16dp"
                 app:cardElevation="2dp"
                 android:layout_marginBottom="24dp">
@@ -359,7 +381,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Ngôn ngữ"
-                            android:textColor="#202124"
+                            android:textColor="#A2ADBB"
                             android:textSize="16sp"/>
 
                         <!-- Switch Tiếng Việt/Tiếng Anh -->
@@ -368,14 +390,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Tiếng Việt "
-                            android:textColor="#5F6368"
+                            android:textColor="#A2ADBB"
                             android:checked="true"/>
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#F0F0F0"
+                        android:background="#2B3A67"
                         android:layout_marginBottom="16dp"/>
 
                     <!-- Phiên bản -->
@@ -390,7 +412,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Phiên bản ứng dụng"
-                            android:textColor="#202124"
+                            android:textColor="#A2ADBB"
                             android:textSize="16sp"/>
 
                         <TextView
@@ -398,7 +420,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1.0.0"
-                            android:textColor="#9E9E9E"
+                            android:textColor="#8A95A5"
                             android:textSize="14sp"/>
                     </LinearLayout>
                 </LinearLayout>

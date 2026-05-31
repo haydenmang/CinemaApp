@@ -25,6 +25,7 @@ public class AuthService {
                 } else if (!user.password.equals(password)) {
                     callback.onError("Mật khẩu không đúng");
                 } else {
+                    UserRepository.currentUser = user;
                     callback.onSuccess();
                 }
             }
