@@ -23,6 +23,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.data.repository.MovieCatalogRepository;
+import com.example.cinemaapp.ui.CinemaShowtimeActivity;
 import com.example.cinemaapp.ui.movie.adapter.BannerAdapter;
 import com.example.cinemaapp.ui.movie.adapter.MoviePagerAdapter;
 import com.example.cinemaapp.ui.movie.model.MovieItem;
@@ -216,7 +217,8 @@ public class MainActivity extends AppCompatActivity {
             if (id == R.id.nav_movies) {
                 Toast.makeText(this, "Chuyển đến màn hình Chọn Phim", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_theaters) {
-                Toast.makeText(this, "Chuyển đến màn hình Rạp chiếu", Toast.LENGTH_SHORT).show();
+                android.content.Intent intent = new android.content.Intent(MainActivity.this, CinemaShowtimeActivity.class);
+                startActivity(intent);
             } else if (id == R.id.nav_profile) {
                 Toast.makeText(this, "Chuyển đến màn hình Tài Khoản", Toast.LENGTH_SHORT).show();
             }
@@ -286,7 +288,22 @@ public class MainActivity extends AppCompatActivity {
         }
         btnBookNow.setOnClickListener(v -> {
             // TODO: logic đặt vé
-        });
+            // 1. Kiểm tra xem danh sách phim có bị rỗng không
+            if (movieAdapter == null || movieAdapter.getItemCount() == 0) return;
+            // 2. Lấy vị trí của bộ phim đang nằm chính giữa màn hình
+            int currentPosition = viewPagerMovies.getCurrentItem();
+            MovieItem selectedMovie = movieAdapter.getMovieAt(currentPosition);
+            if (selectedMovie == null) return;
+            // 3. Tạo Intent để chuyển sang trang Chọn Rạp (CinemaShowtimeActivity)
+            android.content.Intent intent = new android.content.Intent(MainActivity.this, CinemaShowtimeActivity.class);
+            // 4. Gói thông tin của bộ phim đang chọn để gửi sang màn hình Rạp
+            // (Màn hình rạp sẽ dựa vào ID phim này để chỉ hiển thị các rạp có chiếu phim này)
+            intent.putExtra("MOVIE_ID", selectedMovie.getId());
+            intent.putExtra("MOVIE_TITLE", selectedMovie.getTitle());
+
+            // 5. Khởi chạy chuyển trang!
+            startActivity(intent);
+            });
     }
 
     private void loadMoviesFromDatabase() {
