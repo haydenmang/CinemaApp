@@ -53,6 +53,9 @@
         <activity
             android:name=".ui.MovieByCinemaActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.ChooseMovieActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
