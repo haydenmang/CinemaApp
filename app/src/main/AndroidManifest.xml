@@ -28,6 +28,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".RoomSelectionActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".SeatSelectionActivity"
             android:exported="false" />
 
