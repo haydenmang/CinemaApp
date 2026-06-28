@@ -1,10 +1,12 @@
 package com.example.cinemaapp.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.SeatSelectionActivity;
 import android.util.Log;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -55,6 +57,14 @@ public class MovieByCinemaActivity extends AppCompatActivity {
 
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
         adapter = new MovieByCinemaAdapter();
+        adapter.setOnShowtimeClickListener((movie, showtime) -> {
+            Intent intent = new Intent(this, SeatSelectionActivity.class);
+            intent.putExtra("movie_title", movie.getTitle());
+            intent.putExtra("showtime", showtime.getStartTime());
+            intent.putExtra("cinema_name", cinemaName);
+            intent.putExtra("cinema_address", getIntent().getStringExtra("cinema_address"));
+            startActivity(intent);
+        });
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
         rvMovies.setAdapter(adapter);
 

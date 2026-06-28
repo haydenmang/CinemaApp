@@ -37,6 +37,7 @@ public class CinemaShowtimeActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MovieByCinemaActivity.class);
             intent.putExtra("cinema_id", cinema.getId());
             intent.putExtra("cinema_name", cinema.getName());
+            intent.putExtra("cinema_address", cinema.getAddress());
             startActivity(intent);
         });
         rvCinemaList.setLayoutManager(new LinearLayoutManager(this));

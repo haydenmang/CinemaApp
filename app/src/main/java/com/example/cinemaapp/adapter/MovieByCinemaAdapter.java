@@ -20,13 +20,22 @@ import java.util.Map;
 
 public class MovieByCinemaAdapter extends RecyclerView.Adapter<MovieByCinemaAdapter.ViewHolder> {
 
+    public interface OnShowtimeClickListener {
+        void onShowtimeClick(Movie movie, Showtime showtime);
+    }
+
     private List<Movie> movies = new ArrayList<>();
     private Map<Integer, List<Showtime>> showtimeMap;
+    private OnShowtimeClickListener listener;
 
     public void setData(List<Movie> movies, Map<Integer, List<Showtime>> showtimeMap) {
         this.movies = movies;
         this.showtimeMap = showtimeMap;
         notifyDataSetChanged();
+    }
+
+    public void setOnShowtimeClickListener(OnShowtimeClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -46,15 +55,24 @@ public class MovieByCinemaAdapter extends RecyclerView.Adapter<MovieByCinemaAdap
 
         List<Showtime> showtimes = showtimeMap != null ? showtimeMap.get(movie.getId()) : null;
         if (showtimes != null) {
+            // Lọc trùng giờ chiếu
+            java.util.Set<String> addedTimes = new java.util.HashSet<>();
             for (Showtime st : showtimes) {
+                String time = formatTime(st.getStartTime());
+                if (addedTimes.contains(time)) continue;
+                addedTimes.add(time);
+
                 Chip chip = new Chip(holder.itemView.getContext());
-                chip.setText(formatTime(st.getStartTime()));
+                chip.setText(time);
                 chip.setChipBackgroundColorResource(R.color.chip_bg);
                 chip.setTextColor(0xFFFFFFFF);
                 chip.setTextSize(13f);
                 chip.setChipCornerRadius(8f);
                 chip.setEnsureMinTouchTargetSize(false);
                 chip.setPadding(4, 0, 4, 0);
+                chip.setOnClickListener(v -> {
+                    if (listener != null) listener.onShowtimeClick(movie, st);
+                });
                 holder.cgShowtimes.addView(chip);
             }
         }
