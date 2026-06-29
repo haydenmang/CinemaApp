@@ -65,6 +65,15 @@ public class MovieByCinemaAdapter extends RecyclerView.Adapter<MovieByCinemaAdap
                 chip.setChipCornerRadius(8f);
                 chip.setEnsureMinTouchTargetSize(false);
                 chip.setPadding(4, 0, 4, 0);
+
+                // Mở giao diện Chọn phòng của Huy
+                chip.setOnClickListener(v -> {
+                    android.content.Intent intent = new android.content.Intent(holder.itemView.getContext(), com.example.cinemaapp.RoomSelectionActivity.class);
+                    intent.putExtra("movie_title", movie.getTitle());
+                    intent.putExtra("showtime", timeStr);
+                    holder.itemView.getContext().startActivity(intent);
+                });
+
                 holder.cgShowtimes.addView(chip);
             }
         }
