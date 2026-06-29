@@ -26,11 +26,30 @@ public class ProfileActivity extends AppCompatActivity {
 
         com.example.cinemaapp.utils.SessionManager sessionManager = new com.example.cinemaapp.utils.SessionManager(this);
         com.example.cinemaapp.data.model.User currentUser = sessionManager.getUserSession();
-        if (currentUser != null && currentUser.name != null) {
-            android.widget.TextView txtName = findViewById(R.id.txtName);
-            if (txtName != null) {
+        android.widget.TextView txtName = findViewById(R.id.txtName);
+        if (currentUser != null && currentUser.phone != null && !currentUser.phone.isEmpty()) {
+            // Tạm thời hiển thị tên từ Session
+            if (currentUser.name != null && txtName != null) {
                 txtName.setText(currentUser.name.toUpperCase());
             }
+            // Gọi DB để lấy dữ liệu mới nhất
+            com.example.cinemaapp.data.repository.UserRepository userRepository = new com.example.cinemaapp.data.repository.UserRepository();
+            userRepository.getUserByPhone(currentUser.phone, new com.example.cinemaapp.data.repository.UserRepository.Callback1<com.example.cinemaapp.data.model.User>() {
+                @Override
+                public void onResult(com.example.cinemaapp.data.model.User user) {
+                    if (user != null && user.name != null) {
+                        runOnUiThread(() -> {
+                            if (txtName != null) {
+                                txtName.setText(user.name.toUpperCase());
+                            }
+                            // Cập nhật lại session
+                            sessionManager.saveUserSession(user);
+                        });
+                    }
+                }
+                @Override
+                public void onError(String message) {}
+            });
         }
 
         ImageView imgSetting = findViewById(R.id.imgSettings);

@@ -28,15 +28,38 @@ public class SettingActivity extends AppCompatActivity {
 
         com.example.cinemaapp.utils.SessionManager sessionManager = new com.example.cinemaapp.utils.SessionManager(this);
         com.example.cinemaapp.data.model.User currentUser = sessionManager.getUserSession();
-        if (currentUser != null) {
+        if (currentUser != null && currentUser.phone != null && !currentUser.phone.isEmpty()) {
             android.widget.EditText edtName = findViewById(R.id.edtName);
+            android.widget.EditText edtPhone = findViewById(R.id.edtPhone);
+
+            // Hiển thị tạm thời từ session
             if (edtName != null && currentUser.name != null) {
                 edtName.setText(currentUser.name);
             }
-            android.widget.EditText edtPhone = findViewById(R.id.edtPhone);
             if (edtPhone != null && currentUser.phone != null) {
                 edtPhone.setText(currentUser.phone);
             }
+
+            // Gọi DB lấy dữ liệu mới nhất
+            com.example.cinemaapp.data.repository.UserRepository userRepository = new com.example.cinemaapp.data.repository.UserRepository();
+            userRepository.getUserByPhone(currentUser.phone, new com.example.cinemaapp.data.repository.UserRepository.Callback1<com.example.cinemaapp.data.model.User>() {
+                @Override
+                public void onResult(com.example.cinemaapp.data.model.User user) {
+                    if (user != null) {
+                        runOnUiThread(() -> {
+                            if (edtName != null && user.name != null) {
+                                edtName.setText(user.name);
+                            }
+                            if (edtPhone != null && user.phone != null) {
+                                edtPhone.setText(user.phone);
+                            }
+                            sessionManager.saveUserSession(user);
+                        });
+                    }
+                }
+                @Override
+                public void onError(String message) {}
+            });
         }
     }
 }

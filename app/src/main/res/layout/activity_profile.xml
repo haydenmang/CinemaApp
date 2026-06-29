@@ -78,7 +78,7 @@
                     android:id="@+id/txtName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ĐINH HẢI ĐĂNG"
+                    android:text="Khách"
                     android:textColor="#202124"
                     android:textSize="20sp"
                     android:textStyle="bold" />
