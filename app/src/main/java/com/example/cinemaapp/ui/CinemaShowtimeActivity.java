@@ -53,12 +53,35 @@ public class CinemaShowtimeActivity extends AppCompatActivity {
         rvCinemaList.setLayoutManager(new LinearLayoutManager(this));
         rvCinemaList.setAdapter(adapter);
 
-        // Ẩn date selector — không cần ở màn hình chọn rạp
+        // Khởi tạo Date Selector
         RecyclerView rvDateSelector = findViewById(R.id.rvDateSelector);
         rvDateSelector.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        rvDateSelector.setAdapter(new DateSelectorAdapter(buildDateList(), (date, pos) -> {
+        
+        List<Calendar> dates = buildDateList();
+        DateSelectorAdapter dateAdapter = new DateSelectorAdapter(dates, (date, pos) -> {
             selectedDate = date;
-        }));
+        });
+        
+        // Hứng ngày từ màn hình Chọn Phim truyền sang (nếu có)
+        int passedYear = getIntent().getIntExtra("SELECTED_YEAR", -1);
+        int passedMonth = getIntent().getIntExtra("SELECTED_MONTH", -1);
+        int passedDay = getIntent().getIntExtra("SELECTED_DAY", -1);
+        
+        if (passedYear != -1 && passedMonth != -1 && passedDay != -1) {
+            for (int i = 0; i < dates.size(); i++) {
+                Calendar d = dates.get(i);
+                if (d.get(Calendar.YEAR) == passedYear && 
+                    d.get(Calendar.MONTH) == passedMonth && 
+                    d.get(Calendar.DAY_OF_MONTH) == passedDay) {
+                    selectedDate = d;
+                    dateAdapter.setSelectedPosition(i);
+                    rvDateSelector.scrollToPosition(i);
+                    break;
+                }
+            }
+        }
+        
+        rvDateSelector.setAdapter(dateAdapter);
 
         apiService = SupabaseClient.getClient().create(ApiService.class);
         loadCinemas();

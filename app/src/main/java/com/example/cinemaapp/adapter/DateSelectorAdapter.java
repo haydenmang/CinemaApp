@@ -22,6 +22,15 @@ public class DateSelectorAdapter extends RecyclerView.Adapter<DateSelectorAdapte
     private int selectedPosition = 0;
     private final OnDateClickListener listener;
 
+    public void setSelectedPosition(int position) {
+        if (position >= 0 && position < dates.size()) {
+            int prev = selectedPosition;
+            selectedPosition = position;
+            notifyItemChanged(prev);
+            notifyItemChanged(selectedPosition);
+        }
+    }
+
     private static final SimpleDateFormat DAY_NAME_FMT = new SimpleDateFormat("EEE", new Locale("vi"));
     private static final SimpleDateFormat DAY_NUM_FMT  = new SimpleDateFormat("dd", Locale.getDefault());
 
