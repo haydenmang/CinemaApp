@@ -134,9 +134,11 @@ public class LoginActivity extends AppCompatActivity {
 
         authService.login(phone, password, new AuthService.AuthCallback() {
             @Override
-            public void onSuccess() {
+            public void onSuccess(com.example.cinemaapp.data.model.User user) {
                 runOnUiThread(() -> {
-                    Intent intent = new Intent(LoginActivity.this, com.example.cinemaapp.ui.CinemaShowtimeActivity.class);
+                    com.example.cinemaapp.utils.SessionManager sessionManager = new com.example.cinemaapp.utils.SessionManager(LoginActivity.this);
+                    sessionManager.saveUserSession(user);
+                    Intent intent = new Intent(LoginActivity.this, com.example.cinemaapp.ui.home.MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

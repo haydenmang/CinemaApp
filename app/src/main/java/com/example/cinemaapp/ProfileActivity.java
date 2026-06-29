@@ -24,6 +24,15 @@ public class ProfileActivity extends AppCompatActivity {
             return insets;
         });
 
+        com.example.cinemaapp.utils.SessionManager sessionManager = new com.example.cinemaapp.utils.SessionManager(this);
+        com.example.cinemaapp.data.model.User currentUser = sessionManager.getUserSession();
+        if (currentUser != null && currentUser.name != null) {
+            android.widget.TextView txtName = findViewById(R.id.txtName);
+            if (txtName != null) {
+                txtName.setText(currentUser.name.toUpperCase());
+            }
+        }
+
         ImageView imgSetting = findViewById(R.id.imgSettings);
         imgSetting.setOnClickListener(view -> {
             Intent intent = new Intent(ProfileActivity.this, SettingActivity.class);
@@ -62,6 +71,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.btnLogout).setOnClickListener(view -> {
+            sessionManager.logout();
             Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.auth.LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);

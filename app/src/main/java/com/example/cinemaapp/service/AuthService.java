@@ -12,7 +12,7 @@ public class AuthService {
     }
 
     public interface AuthCallback {
-        void onSuccess();
+        void onSuccess(User user);
         void onError(String message);
     }
 
@@ -25,7 +25,7 @@ public class AuthService {
                 } else if (!user.password.equals(password)) {
                     callback.onError("Mật khẩu không đúng");
                 } else {
-                    callback.onSuccess();
+                    callback.onSuccess(user);
                 }
             }
 
@@ -57,7 +57,7 @@ public class AuthService {
                         userRepository.createUser(userInfo, new UserRepository.Callback1<Boolean>() {
                             @Override
                             public void onResult(Boolean success) {
-                                callback.onSuccess();
+                                callback.onSuccess(userInfo);
                             }
                             @Override
                             public void onError(String message) {

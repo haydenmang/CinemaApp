@@ -122,12 +122,13 @@ public class RegisterActivity extends AppCompatActivity {
 
         authService.signUp(user, new AuthService.AuthCallback() {
             @Override
-            public void onSuccess() {
+            public void onSuccess(User user) {
                 runOnUiThread(() -> {
+                    Toast.makeText(RegisterActivity.this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 });
             }
 

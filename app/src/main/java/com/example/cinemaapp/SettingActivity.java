@@ -25,5 +25,18 @@ public class SettingActivity extends AppCompatActivity {
         if (btnBack != null) {
             btnBack.setOnClickListener(v -> finish());
         }
+
+        com.example.cinemaapp.utils.SessionManager sessionManager = new com.example.cinemaapp.utils.SessionManager(this);
+        com.example.cinemaapp.data.model.User currentUser = sessionManager.getUserSession();
+        if (currentUser != null) {
+            android.widget.EditText edtName = findViewById(R.id.edtName);
+            if (edtName != null && currentUser.name != null) {
+                edtName.setText(currentUser.name);
+            }
+            android.widget.EditText edtPhone = findViewById(R.id.edtPhone);
+            if (edtPhone != null && currentUser.phone != null) {
+                edtPhone.setText(currentUser.phone);
+            }
+        }
     }
 }
