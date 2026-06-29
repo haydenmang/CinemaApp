@@ -63,6 +63,12 @@ public interface ApiService {
     Call<List<Showtime>> getAllShowtimes();
 
     @GET("showtimes")
+    Call<List<Showtime>> getShowtimesByDateRange(
+            @Query("start_time") String gteDate,
+            @Query("start_time") String lteDate
+    );
+
+    @GET("showtimes")
     Call<List<Showtime>> getShowtimesByRoom(@Query("room_id") String roomIdFilter);
 
     // ===== BOOKINGS =====

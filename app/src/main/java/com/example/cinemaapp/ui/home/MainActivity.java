@@ -215,7 +215,8 @@ public class MainActivity extends AppCompatActivity {
             }
             pauseAutoScrolls();
             if (id == R.id.nav_movies) {
-                Toast.makeText(this, "Chuyển đến màn hình Chọn Phim", Toast.LENGTH_SHORT).show();
+                android.content.Intent intent = new android.content.Intent(MainActivity.this, com.example.cinemaapp.ui.ChooseMovieActivity.class);
+                startActivity(intent);
             } else if (id == R.id.nav_theaters) {
                 android.content.Intent intent = new android.content.Intent(MainActivity.this, CinemaShowtimeActivity.class);
                 startActivity(intent);
