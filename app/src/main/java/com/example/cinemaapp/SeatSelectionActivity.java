@@ -33,7 +33,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
     private static final int COLS = 10;
 
     private long seatPrice = 80000; // giá mặc định, nhận từ intent, nhưng sẽ bị ghi đè bởi VIP logic nếu cần
-    private static final long VIP_PRICE = 120000;
+    private long vipPrice = 120000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +47,13 @@ public class SeatSelectionActivity extends AppCompatActivity {
         String movieTitle = getIntent().getStringExtra("movie_title");
         String showtime = getIntent().getStringExtra("showtime");
         seatPrice = getIntent().getLongExtra("seat_price", 85000);
+        vipPrice = seatPrice + 35000;
 
         if (movieTitle != null) ((TextView) findViewById(R.id.tvMovieTitle)).setText(movieTitle);
         if (showtime != null) ((TextView) findViewById(R.id.tvShowtime)).setText(showtime);
 
         // Hiển thị giá vé
-        ((TextView) findViewById(R.id.tvShowtime)).append("  •  Thường: " + formatPrice(seatPrice) + "đ, VIP: " + formatPrice(VIP_PRICE) + "đ");
+        ((TextView) findViewById(R.id.tvShowtime)).append("  •  Thường: " + formatPrice(seatPrice) + "đ, VIP: " + formatPrice(vipPrice) + "đ");
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
         buildSeatMap();
@@ -75,7 +76,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
                     List<String> sorted = new ArrayList<>(selectedSeats);
                     Collections.sort(sorted);
                     long total = sorted.stream().mapToLong(s ->
-                        vipRows.contains(String.valueOf(s.charAt(0))) ? VIP_PRICE : seatPrice).sum();
+                        vipRows.contains(String.valueOf(s.charAt(0))) ? vipPrice : seatPrice).sum();
 
                     Intent intent = new Intent(this, ComboActivity.class);
                     intent.putExtra("movie_title", getIntent().getStringExtra("movie_title"));
@@ -182,7 +183,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
         List<String> sorted = new ArrayList<>(selectedSeats);
         Collections.sort(sorted);
         long total = sorted.stream().mapToLong(s ->
-            vipRows.contains(String.valueOf(s.charAt(0))) ? VIP_PRICE : seatPrice).sum();
+            vipRows.contains(String.valueOf(s.charAt(0))) ? vipPrice : seatPrice).sum();
         tvSelectedSeats.setText("Ghế: " + String.join(", ", sorted));
         tvTotalPrice.setText(formatPrice(total) + " đ");
     }
