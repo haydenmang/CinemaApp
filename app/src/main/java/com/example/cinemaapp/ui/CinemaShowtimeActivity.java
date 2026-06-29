@@ -48,7 +48,7 @@ public class CinemaShowtimeActivity extends AppCompatActivity {
             intent.putExtra("SELECTED_YEAR", selectedDate.get(Calendar.YEAR));
             intent.putExtra("SELECTED_MONTH", selectedDate.get(Calendar.MONTH));
             intent.putExtra("SELECTED_DAY", selectedDate.get(Calendar.DAY_OF_MONTH));
-
+            intent.putExtra("cinema_address", cinema.getAddress());
             startActivity(intent);
         });
 

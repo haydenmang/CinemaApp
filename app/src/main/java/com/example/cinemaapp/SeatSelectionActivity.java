@@ -1,5 +1,6 @@
 package com.example.cinemaapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -25,11 +27,13 @@ public class SeatSelectionActivity extends AppCompatActivity {
 
     private final Set<String> selectedSeats = new HashSet<>();
     private final Set<String> bookedSeats = new HashSet<>();
+    private final Set<String> vipRows = new HashSet<>(Arrays.asList("D", "E", "F"));
 
     private static final String[] ROWS = {"A", "B", "C", "D", "E", "F", "G", "H"};
     private static final int COLS = 10;
 
-    private long seatPrice = 80000; // giá mặc định, nhận từ intent
+    private long seatPrice = 80000; // giá mặc định, nhận từ intent, nhưng sẽ bị ghi đè bởi VIP logic nếu cần
+    private static final long VIP_PRICE = 120000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +46,13 @@ public class SeatSelectionActivity extends AppCompatActivity {
 
         String movieTitle = getIntent().getStringExtra("movie_title");
         String showtime = getIntent().getStringExtra("showtime");
-        seatPrice = getIntent().getLongExtra("seat_price", 80000);
+        seatPrice = getIntent().getLongExtra("seat_price", 85000);
 
         if (movieTitle != null) ((TextView) findViewById(R.id.tvMovieTitle)).setText(movieTitle);
         if (showtime != null) ((TextView) findViewById(R.id.tvShowtime)).setText(showtime);
 
         // Hiển thị giá vé
-        ((TextView) findViewById(R.id.tvShowtime)).append("  •  " + formatPrice(seatPrice) + "đ/ghế");
+        ((TextView) findViewById(R.id.tvShowtime)).append("  •  Thường: " + formatPrice(seatPrice) + "đ, VIP: " + formatPrice(VIP_PRICE) + "đ");
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
         buildSeatMap();
@@ -62,13 +66,26 @@ public class SeatSelectionActivity extends AppCompatActivity {
                     .withEndAction(() -> v.animate().translationX(0f).setDuration(60).start())
                     .start()).start();
                 Toast.makeText(this, "Vui lòng chọn ít nhất 1 ghế", Toast.LENGTH_SHORT).show();
-            } else {
-                v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(100)
-                    .withEndAction(() -> v.animate().scaleX(1f).scaleY(1f).setDuration(100)
-                    .withEndAction(() ->
-                        Toast.makeText(this, "Đặt vé: " + selectedSeats, Toast.LENGTH_SHORT).show())
-                    .start()).start();
+                return;
             }
+
+            v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(100)
+                .withEndAction(() -> {
+                    v.animate().scaleX(1f).scaleY(1f).setDuration(100).start();
+                    List<String> sorted = new ArrayList<>(selectedSeats);
+                    Collections.sort(sorted);
+                    long total = sorted.stream().mapToLong(s ->
+                        vipRows.contains(String.valueOf(s.charAt(0))) ? VIP_PRICE : seatPrice).sum();
+
+                    Intent intent = new Intent(this, ComboActivity.class);
+                    intent.putExtra("movie_title", getIntent().getStringExtra("movie_title"));
+                    intent.putExtra("showtime", getIntent().getStringExtra("showtime"));
+                    intent.putExtra("cinema_name", getIntent().getStringExtra("cinema_name"));
+                    intent.putExtra("cinema_address", getIntent().getStringExtra("cinema_address"));
+                    intent.putStringArrayListExtra("selected_seats", new ArrayList<>(sorted));
+                    intent.putExtra("total_price", total);
+                    startActivity(intent);
+                }).start();
         });
     }
 
@@ -84,7 +101,6 @@ public class SeatSelectionActivity extends AppCompatActivity {
                 if (col == 6) rowLayout.addView(makeSpacer(size));
                 rowLayout.addView(makeSeat(row, col, size, margin));
             }
-
             rowLayout.addView(makeLabel(row));
             seatContainer.addView(rowLayout);
 
@@ -133,11 +149,11 @@ public class SeatSelectionActivity extends AppCompatActivity {
             seat.setBackground(getDrawable(R.drawable.seat_booked));
             seat.setEnabled(false);
         } else {
-            seat.setBackground(getDrawable(R.drawable.seat_empty));
+            seat.setBackground(getDrawable(vipRows.contains(row) ? R.drawable.seat_vip : R.drawable.seat_empty));
             seat.setOnClickListener(v -> {
                 if (selectedSeats.contains(seatId)) {
                     selectedSeats.remove(seatId);
-                    seat.setBackground(getDrawable(R.drawable.seat_empty));
+                    seat.setBackground(getDrawable(vipRows.contains(row) ? R.drawable.seat_vip : R.drawable.seat_empty));
                     // Shrink animation khi bỏ chọn
                     seat.animate().scaleX(0.8f).scaleY(0.8f).setDuration(80)
                         .withEndAction(() -> seat.animate().scaleX(1f).scaleY(1f).setDuration(80).start())
@@ -165,7 +181,8 @@ public class SeatSelectionActivity extends AppCompatActivity {
         }
         List<String> sorted = new ArrayList<>(selectedSeats);
         Collections.sort(sorted);
-        long total = sorted.size() * seatPrice;
+        long total = sorted.stream().mapToLong(s ->
+            vipRows.contains(String.valueOf(s.charAt(0))) ? VIP_PRICE : seatPrice).sum();
         tvSelectedSeats.setText("Ghế: " + String.join(", ", sorted));
         tvTotalPrice.setText(formatPrice(total) + " đ");
     }

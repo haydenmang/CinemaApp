@@ -136,7 +136,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess() {
                 runOnUiThread(() -> {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, com.example.cinemaapp.ui.CinemaShowtimeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);

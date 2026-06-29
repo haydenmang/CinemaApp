@@ -20,13 +20,22 @@ import java.util.Map;
 
 public class MovieByCinemaAdapter extends RecyclerView.Adapter<MovieByCinemaAdapter.ViewHolder> {
 
+    public interface OnShowtimeClickListener {
+        void onShowtimeClick(Movie movie, Showtime showtime);
+    }
+
     private List<Movie> movies = new ArrayList<>();
     private Map<Integer, List<Showtime>> showtimeMap;
+    private OnShowtimeClickListener listener;
 
     public void setData(List<Movie> movies, Map<Integer, List<Showtime>> showtimeMap) {
         this.movies = movies;
         this.showtimeMap = showtimeMap;
         notifyDataSetChanged();
+    }
+
+    public void setOnShowtimeClickListener(OnShowtimeClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -73,7 +82,6 @@ public class MovieByCinemaAdapter extends RecyclerView.Adapter<MovieByCinemaAdap
                     intent.putExtra("showtime", timeStr);
                     holder.itemView.getContext().startActivity(intent);
                 });
-
                 holder.cgShowtimes.addView(chip);
             }
         }

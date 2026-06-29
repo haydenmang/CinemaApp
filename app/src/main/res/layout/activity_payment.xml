@@ -1,0 +1,295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D0D12"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_menu_revert"
+                android:background="@android:color/transparent"
+                android:contentDescription="Back"
+                app:tint="#E50914" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Thanh toán"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+        <!-- Movie Info Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#1A1A2E"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/tvMovieTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tên phim"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvShowtime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Suất chiếu"
+                    android:textColor="#AAAAAA"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="6dp" />
+
+                <TextView
+                    android:id="@+id/tvSeats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ghế"
+                    android:textColor="#AAAAAA"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="6dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Số lượng vé:"
+                        android:textColor="#AAAAAA"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvSeatCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="#E8B84B"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Combo Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#1A1A2E"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:id="@+id/layoutCombo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Combo đã chọn"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvComboDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Không có combo"
+                    android:textColor="#AAAAAA"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="6dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tổng combo:"
+                        android:textColor="#AAAAAA"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvComboPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0đ"
+                        android:textColor="#E8B84B"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Payment Method Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="#1A1A2E"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phương thức thanh toán"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp" />
+
+                <RadioGroup
+                    android:id="@+id/rgPayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/rbMomo"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="12dp"
+                        android:text="Ví MoMo"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:buttonTint="#E8B84B"
+                        android:layout_marginBottom="4dp" />
+
+                    <RadioButton
+                        android:id="@+id/rbVnpay"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="12dp"
+                        android:text="VNPay"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:buttonTint="#E8B84B"
+                        android:layout_marginBottom="4dp" />
+
+                    <RadioButton
+                        android:id="@+id/rbBank"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:gravity="center_vertical"
+                        android:paddingStart="12dp"
+                        android:text="Chuyển khoản ngân hàng"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:buttonTint="#E8B84B" />
+                </RadioGroup>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Total Price Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:cardBackgroundColor="#1A1A2E"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            xmlns:app="http://schemas.android.com/apk/res-auto">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tổng thanh toán:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTotalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0đ"
+                    android:textColor="#E8B84B"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Buttons -->
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="#E8B84B"
+            android:text="XÁC NHẬN THANH TOÁN"
+            android:textColor="#0D0D12"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+    </LinearLayout>
+</ScrollView>

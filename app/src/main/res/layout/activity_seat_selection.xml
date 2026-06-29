@@ -112,6 +112,9 @@
         <View android:layout_width="14dp" android:layout_height="14dp" android:background="@drawable/seat_selected" />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" Đang chọn  " android:textColor="#AAAAAA" android:textSize="11sp" />
 
+        <View android:layout_width="14dp" android:layout_height="14dp" android:background="@drawable/seat_vip" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" VIP  " android:textColor="#AAAAAA" android:textSize="11sp" />
+
         <View android:layout_width="14dp" android:layout_height="14dp" android:background="@drawable/seat_booked" />
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" Đã đặt" android:textColor="#AAAAAA" android:textSize="11sp" />
     </LinearLayout>
