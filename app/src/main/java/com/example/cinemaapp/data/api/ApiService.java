@@ -15,6 +15,12 @@ public interface ApiService {
             @Query("limit") int limit
     );
 
+    @GET("movies?select=*,showtimes!inner(id)")
+    Call<List<Movie>> getMoviesPlayingOnDate(
+            @Query("showtimes.start_time") String gteDate,
+            @Query("showtimes.start_time") String lteDate
+    );
+
     @GET("movies")
     Call<List<Movie>> getMovieById(@Query("id") String idFilter); // id=eq.1
 

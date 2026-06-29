@@ -176,32 +176,10 @@ public class ChooseMovieActivity extends AppCompatActivity {
     }
 
     private void loadAllMovies() {
-        progressBar.setVisibility(View.VISIBLE);
-        apiService.getMovies("id.asc", 100).enqueue(new Callback<List<Movie>>() {
-            @Override
-            public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    allMovies = response.body();
-                    filterMoviesByDate();
-                } else {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(ChooseMovieActivity.this, "Không tải được phim từ máy chủ", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Movie>> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(ChooseMovieActivity.this, "Lỗi kết nối máy chủ", Toast.LENGTH_SHORT).show();
-            }
-        });
+        filterMoviesByDate();
     }
 
     private void filterMoviesByDate() {
-        if (allMovies == null || allMovies.isEmpty()) {
-            return;
-        }
-
         progressBar.setVisibility(View.VISIBLE);
         rvMovieList.setVisibility(View.GONE);
         layoutEmpty.setVisibility(View.GONE);
@@ -214,27 +192,13 @@ public class ChooseMovieActivity extends AppCompatActivity {
         String gteDate = "gte." + yyyyMMdd + "T00:00:00";
         String lteDate = "lte." + yyyyMMdd + "T23:59:59";
 
-        apiService.getShowtimesByDateRange(gteDate, lteDate).enqueue(new Callback<List<Showtime>>() {
+        apiService.getMoviesPlayingOnDate(gteDate, lteDate).enqueue(new Callback<List<Movie>>() {
             @Override
-            public void onResponse(Call<List<Showtime>> call, Response<List<Showtime>> response) {
+            public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful() && response.body() != null) {
-                    List<Showtime> showtimes = response.body();
-                    
-                    // Extract unique movie ids
-                    Set<Integer> activeMovieIds = new HashSet<>();
-                    for (Showtime st : showtimes) {
-                        activeMovieIds.add(st.getMovieId());
-                    }
-
-                    // Filter
                     filteredMovies.clear();
-                    for (Movie m : allMovies) {
-                        if (activeMovieIds.contains(m.getId())) {
-                            filteredMovies.add(m);
-                        }
-                    }
-
+                    filteredMovies.addAll(response.body());
                     updateMovieUi();
                 } else {
                     filteredMovies.clear();
@@ -243,11 +207,11 @@ public class ChooseMovieActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Showtime>> call, Throwable t) {
+            public void onFailure(Call<List<Movie>> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
                 filteredMovies.clear();
                 updateMovieUi();
-                Toast.makeText(ChooseMovieActivity.this, "Lỗi tải lịch chiếu", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChooseMovieActivity.this, "Lỗi tải phim", Toast.LENGTH_SHORT).show();
             }
         });
     }
