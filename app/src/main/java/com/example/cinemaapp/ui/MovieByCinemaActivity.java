@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.example.cinemaapp.R;
-import com.example.cinemaapp.SeatSelectionActivity;
+import com.example.cinemaapp.RoomSelectionActivity;
 import android.util.Log;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,8 +59,9 @@ public class MovieByCinemaActivity extends AppCompatActivity {
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
         adapter = new MovieByCinemaAdapter();
         adapter.setOnShowtimeClickListener((movie, showtime) -> {
-            Intent intent = new Intent(this, SeatSelectionActivity.class);
+            Intent intent = new Intent(this, RoomSelectionActivity.class);
             intent.putExtra("movie_title", movie.getTitle());
+            // showtime.getStartTime() chứa chuỗi dạng yyyy-MM-dd'T'HH:mm:ss nếu từ DB
             intent.putExtra("showtime", showtime.getStartTime());
             intent.putExtra("cinema_name", cinemaName);
             intent.putExtra("cinema_address", getIntent().getStringExtra("cinema_address"));

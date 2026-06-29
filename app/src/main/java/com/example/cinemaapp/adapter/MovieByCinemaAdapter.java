@@ -75,12 +75,21 @@ public class MovieByCinemaAdapter extends RecyclerView.Adapter<MovieByCinemaAdap
                 chip.setEnsureMinTouchTargetSize(false);
                 chip.setPadding(4, 0, 4, 0);
 
-                // Mở giao diện Chọn phòng của Huy
+                // Sử dụng listener thay vì gọi trực tiếp Intent để Activity xử lý truyền dữ liệu
                 chip.setOnClickListener(v -> {
-                    android.content.Intent intent = new android.content.Intent(holder.itemView.getContext(), com.example.cinemaapp.RoomSelectionActivity.class);
-                    intent.putExtra("movie_title", movie.getTitle());
-                    intent.putExtra("showtime", timeStr);
-                    holder.itemView.getContext().startActivity(intent);
+                    if (listener != null) {
+                        // Cần lấy đúng đối tượng showtime. Ở đây st là showtime gốc (chứa startTime full datetime)
+                        Showtime selectedSt = null;
+                        for (Showtime originalSt : showtimes) {
+                            if (formatTime(originalSt.getStartTime()).equals(timeStr)) {
+                                selectedSt = originalSt;
+                                break;
+                            }
+                        }
+                        if (selectedSt != null) {
+                            listener.onShowtimeClick(movie, selectedSt);
+                        }
+                    }
                 });
                 holder.cgShowtimes.addView(chip);
             }

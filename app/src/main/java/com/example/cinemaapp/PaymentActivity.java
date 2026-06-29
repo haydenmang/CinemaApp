@@ -44,7 +44,18 @@ public class PaymentActivity extends AppCompatActivity {
 
         NumberFormat fmt = NumberFormat.getNumberInstance(new Locale("vi", "VN"));
         ((TextView) findViewById(R.id.tvMovieTitle)).setText(movieTitle != null ? movieTitle : "");
-        ((TextView) findViewById(R.id.tvShowtime)).setText(showtime != null ? showtime : "");
+        if (showtime != null) {
+            try {
+                java.text.SimpleDateFormat input = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault());
+                java.text.SimpleDateFormat output = new java.text.SimpleDateFormat("HH:mm - dd/MM", Locale.getDefault());
+                java.util.Date d = input.parse(showtime);
+                ((TextView) findViewById(R.id.tvShowtime)).setText(d != null ? output.format(d) : showtime);
+            } catch (Exception e) {
+                ((TextView) findViewById(R.id.tvShowtime)).setText(showtime);
+            }
+        } else {
+            ((TextView) findViewById(R.id.tvShowtime)).setText("");
+        }
         ((TextView) findViewById(R.id.tvSeats)).setText(String.join(", ", seats));
         ((TextView) findViewById(R.id.tvSeatCount)).setText(seats.size() + " ghế");
         ((TextView) findViewById(R.id.tvTotalPrice)).setText(fmt.format(total) + " đ");

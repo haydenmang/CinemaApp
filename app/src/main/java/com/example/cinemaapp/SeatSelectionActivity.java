@@ -50,7 +50,16 @@ public class SeatSelectionActivity extends AppCompatActivity {
         vipPrice = seatPrice + 35000;
 
         if (movieTitle != null) ((TextView) findViewById(R.id.tvMovieTitle)).setText(movieTitle);
-        if (showtime != null) ((TextView) findViewById(R.id.tvShowtime)).setText(showtime);
+        if (showtime != null) {
+            try {
+                java.text.SimpleDateFormat input = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", java.util.Locale.getDefault());
+                java.text.SimpleDateFormat output = new java.text.SimpleDateFormat("HH:mm - dd/MM", java.util.Locale.getDefault());
+                java.util.Date d = input.parse(showtime);
+                ((TextView) findViewById(R.id.tvShowtime)).setText(d != null ? output.format(d) : showtime);
+            } catch (Exception e) {
+                ((TextView) findViewById(R.id.tvShowtime)).setText(showtime);
+            }
+        }
 
         // Hiển thị giá vé
         ((TextView) findViewById(R.id.tvShowtime)).append("  •  Thường: " + formatPrice(seatPrice) + "đ, VIP: " + formatPrice(vipPrice) + "đ");

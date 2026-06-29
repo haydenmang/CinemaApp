@@ -47,7 +47,7 @@ public class TicketActivity extends AppCompatActivity {
         bookingCodeSaved = "CGV-" + UUID.randomUUID().toString().substring(0, 8).toUpperCase();
 
         ((TextView) findViewById(R.id.tvMovieTitle)).setText(movieTitleSaved != null ? movieTitleSaved : "");
-        ((TextView) findViewById(R.id.tvShowtime)).setText(showtimeSaved != null ? showtimeSaved : "");
+        ((TextView) findViewById(R.id.tvShowtime)).setText(formatShowtime(showtimeSaved));
         ((TextView) findViewById(R.id.tvSeats)).setText(String.join(", ", seatsSaved));
         ((TextView) findViewById(R.id.tvTotalPrice)).setText(fmt.format(totalPriceSaved) + " đ");
         ((TextView) findViewById(R.id.tvPaymentMethod)).setText(paymentMethodSaved != null ? paymentMethodSaved : "");

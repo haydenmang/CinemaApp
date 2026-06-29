@@ -31,16 +31,28 @@ public class RoomSelectionActivity extends AppCompatActivity {
 
         String movieTitle = getIntent().getStringExtra("movie_title");
         String showtime = getIntent().getStringExtra("showtime");
+        String cinemaName = getIntent().getStringExtra("cinema_name");
+        String cinemaAddress = getIntent().getStringExtra("cinema_address");
 
         if (movieTitle != null) ((TextView) findViewById(R.id.tvMovieTitle)).setText(movieTitle);
-        if (showtime != null) ((TextView) findViewById(R.id.tvShowtime)).setText(showtime);
+        if (showtime != null) {
+            // Hiển thị giờ đẹp hơn nếu có thể (nhưng không làm mất chuỗi gốc)
+            try {
+                java.text.SimpleDateFormat input = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", java.util.Locale.getDefault());
+                java.text.SimpleDateFormat output = new java.text.SimpleDateFormat("HH:mm - dd/MM", java.util.Locale.getDefault());
+                java.util.Date d = input.parse(showtime);
+                ((TextView) findViewById(R.id.tvShowtime)).setText(d != null ? output.format(d) : showtime);
+            } catch (Exception e) {
+                ((TextView) findViewById(R.id.tvShowtime)).setText(showtime);
+            }
+        }
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        buildRoomList(movieTitle, showtime);
+        buildRoomList(movieTitle, showtime, cinemaName, cinemaAddress);
     }
 
-    private void buildRoomList(String movieTitle, String showtime) {
+    private void buildRoomList(String movieTitle, String showtime, String cinemaName, String cinemaAddress) {
         LinearLayout container = findViewById(R.id.roomContainer);
         int margin = dpToPx(12);
 
@@ -113,6 +125,8 @@ public class RoomSelectionActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, SeatSelectionActivity.class);
                 intent.putExtra("movie_title", movieTitle);
                 intent.putExtra("showtime", showtime);
+                intent.putExtra("cinema_name", cinemaName);
+                intent.putExtra("cinema_address", cinemaAddress);
                 intent.putExtra("room_type", room.name);
                 intent.putExtra("seat_price", room.price);
                 startActivity(intent);
