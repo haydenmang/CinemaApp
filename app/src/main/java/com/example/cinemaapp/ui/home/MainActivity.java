@@ -221,7 +221,8 @@ public class MainActivity extends AppCompatActivity {
                 android.content.Intent intent = new android.content.Intent(MainActivity.this, CinemaShowtimeActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_profile) {
-                Toast.makeText(this, "Chuyển đến màn hình Tài Khoản", Toast.LENGTH_SHORT).show();
+                android.content.Intent intent = new android.content.Intent(MainActivity.this, com.example.cinemaapp.ProfileActivity.class);
+                startActivity(intent);
             }
             return true;
         });
