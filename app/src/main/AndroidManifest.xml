@@ -29,23 +29,36 @@
         android:theme="@style/Theme.CinemaApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MyTicketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MovieListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.auth.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.CinemaApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.CinemaShowtimeActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.auth.LoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.auth.RegisterActivity"
             android:exported="false" />
