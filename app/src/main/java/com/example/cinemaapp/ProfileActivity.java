@@ -24,13 +24,48 @@ public class ProfileActivity extends AppCompatActivity {
             return insets;
         });
 
-        ImageView imgSetting =(ImageView) findViewById(R.id.imgSettings);
-        imgSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfileActivity.this, SettingActivity.class);
-                startActivity(intent);
-            }
+        ImageView imgSetting = findViewById(R.id.imgSettings);
+        imgSetting.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfileActivity.this, SettingActivity.class);
+            startActivity(intent);
+        });
+
+        ImageView imgBell = findViewById(R.id.imgBell);
+        imgBell.setOnClickListener(view -> {
+            startActivity(new Intent(ProfileActivity.this, NotificationActivity.class));
+        });
+
+        findViewById(R.id.menuMovie).setOnClickListener(view -> {
+            Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.ChooseMovieActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.menuCinema).setOnClickListener(view -> {
+            Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.CinemaShowtimeActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.menuHome).setOnClickListener(view -> {
+            Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.home.MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        });
+
+        findViewById(R.id.menuTheater).setOnClickListener(view -> {
+            Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.CinemaShowtimeActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.menuMyTicket).setOnClickListener(view -> {
+            startActivity(new Intent(ProfileActivity.this, MyTicketActivity.class));
+        });
+
+        findViewById(R.id.btnLogout).setOnClickListener(view -> {
+            Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.auth.LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         });
     }
 }

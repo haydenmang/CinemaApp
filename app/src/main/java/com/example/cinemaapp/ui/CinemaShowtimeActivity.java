@@ -108,6 +108,11 @@ public class CinemaShowtimeActivity extends AppCompatActivity {
                 return true;
             } else if (id == R.id.nav_theaters) {
                 return true;
+            } else if (id == R.id.nav_profile) {
+                Intent intent = new Intent(CinemaShowtimeActivity.this, com.example.cinemaapp.ProfileActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                return true;
             }
             return false;
         });

@@ -191,6 +191,7 @@
                         android:baselineAligned="false">
 
                         <LinearLayout
+                            android:id="@+id/menuHome"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -212,6 +213,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/menuTheater"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -233,6 +235,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/menuSpecialTheater"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -262,6 +265,7 @@
                         android:baselineAligned="false">
 
                         <LinearLayout
+                            android:id="@+id/menuMyTicket"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -282,6 +286,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/menuReward"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -312,6 +317,7 @@
 
             <!-- Logout Button -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:layout_marginHorizontal="24dp"
@@ -321,7 +327,6 @@
                 app:cardElevation="0dp">
 
                 <TextView
-                    android:id="@+id/btnLogout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Đăng xuất"

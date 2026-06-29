@@ -135,7 +135,10 @@ public class ChooseMovieActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             } else if (id == R.id.nav_profile) {
-                Toast.makeText(this, "Chuyển đến màn hình Tài Khoản", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ChooseMovieActivity.this, com.example.cinemaapp.ProfileActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                return true;
             }
             return false;
         });
