@@ -50,6 +50,14 @@
         <activity
             android:name=".ui.movie.detail.MovieDetailActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".RoomSelectionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SeatSelectionActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.MovieByCinemaActivity"
             android:exported="false" />
