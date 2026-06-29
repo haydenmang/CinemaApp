@@ -81,10 +81,11 @@ public class MovieListActivity extends AppCompatActivity {
     private void updateMovieList(int tabPosition) {
         if (!movieRepository.hasData()) return;
         
+        boolean isComingSoon = (tabPosition == 1);
         List<MovieItem> movies = (tabPosition == 0) 
                 ? movieRepository.getNowShowing() 
                 : movieRepository.getComingSoon();
         
-        adapter.setMovies(movies);
+        adapter.setMovies(movies, isComingSoon);
     }
 }

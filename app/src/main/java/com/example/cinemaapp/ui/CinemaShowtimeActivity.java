@@ -36,6 +36,13 @@ public class CinemaShowtimeActivity extends AppCompatActivity {
         RecyclerView rvCinemaList = findViewById(R.id.rvCinemaList);
         // Hứng lấy ID phim từ Trang chủ truyền sang (Nếu không có thì mặc định là -1)
         int targetMovieId = getIntent().getIntExtra("MOVIE_ID", -1);
+        
+        if (targetMovieId == -1) {
+            android.widget.TextView tvTitle = findViewById(R.id.tvMovieTitleHeader);
+            if (tvTitle != null) {
+                tvTitle.setText("CHỌN RẠP CHIẾU");
+            }
+        }
         adapter = new CinemaShowtimeAdapter(cinema -> {
             Intent intent = new Intent(this, MovieByCinemaActivity.class);
             intent.putExtra("cinema_id", cinema.getId());

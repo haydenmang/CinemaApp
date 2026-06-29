@@ -71,6 +71,17 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        android.widget.LinearLayout menuCinema = findViewById(R.id.menuCinema);
+        if (menuCinema != null) {
+            menuCinema.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.CinemaShowtimeActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
         android.widget.TextView txtName = findViewById(R.id.txtName);
         if (com.example.cinemaapp.data.repository.UserRepository.currentUser != null) {
             txtName.setText(com.example.cinemaapp.data.repository.UserRepository.currentUser.name);

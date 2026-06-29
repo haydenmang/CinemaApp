@@ -20,8 +20,10 @@ import java.util.List;
 public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.MovieViewHolder> {
 
     private final List<MovieItem> movieList = new ArrayList<>();
+    private boolean isComingSoon = false;
 
-    public void setMovies(List<MovieItem> newMovies) {
+    public void setMovies(List<MovieItem> newMovies, boolean isComingSoon) {
+        this.isComingSoon = isComingSoon;
         movieList.clear();
         if (newMovies != null) {
             movieList.addAll(newMovies);
@@ -39,7 +41,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         MovieItem movie = movieList.get(position);
-        holder.bind(movie);
+        holder.bind(movie, isComingSoon);
     }
 
     @Override
@@ -70,7 +72,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
             btnBuyTicket = itemView.findViewById(R.id.btnBuyTicket);
         }
 
-        public void bind(MovieItem movie) {
+        public void bind(MovieItem movie, boolean isComingSoon) {
             txtTitle.setText(movie.getTitle());
             txtAgeLimit.setText(movie.getAgeRating() != null && !movie.getAgeRating().isEmpty() ? movie.getAgeRating() : "T13");
             txtFormat.setText("2D");
@@ -80,9 +82,16 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
 
             PosterImageLoader.load(itemView.getContext(), movie.getPosterUrl(), imgPoster);
 
-            btnBuyTicket.setOnClickListener(v -> {
-                // TODO: Logic đặt vé làm sau
-            });
+            if (isComingSoon) {
+                btnBuyTicket.setVisibility(View.GONE);
+            } else {
+                btnBuyTicket.setVisibility(View.VISIBLE);
+                btnBuyTicket.setOnClickListener(v -> {
+                    android.content.Intent intent = new android.content.Intent(v.getContext(), com.example.cinemaapp.ui.CinemaShowtimeActivity.class);
+                    intent.putExtra("MOVIE_ID", movie.getId());
+                    v.getContext().startActivity(intent);
+                });
+            }
         }
     }
 }
