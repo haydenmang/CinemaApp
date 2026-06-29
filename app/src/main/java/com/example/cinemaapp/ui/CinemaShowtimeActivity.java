@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.cinemaapp.R;
+import com.example.cinemaapp.ui.home.MainActivity;
+import com.example.cinemaapp.ui.ChooseMovieActivity;
 import com.example.cinemaapp.adapter.CinemaShowtimeAdapter;
 import com.example.cinemaapp.adapter.DateSelectorAdapter;
 import com.example.cinemaapp.data.api.ApiService;
@@ -85,6 +87,30 @@ public class CinemaShowtimeActivity extends AppCompatActivity {
 
         apiService = SupabaseClient.getClient().create(ApiService.class);
         loadCinemas();
+        
+        setupBottomNavigation();
+    }
+
+    private void setupBottomNavigation() {
+        com.google.android.material.bottomnavigation.BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.nav_theaters);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_home) {
+                Intent intent = new Intent(CinemaShowtimeActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_movies) {
+                Intent intent = new Intent(CinemaShowtimeActivity.this, ChooseMovieActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
+                return true;
+            } else if (id == R.id.nav_theaters) {
+                return true;
+            }
+            return false;
+        });
     }
 
     private List<Calendar> buildDateList() {

@@ -176,10 +176,32 @@ public class ChooseMovieActivity extends AppCompatActivity {
     }
 
     private void loadAllMovies() {
-        filterMoviesByDate();
+        progressBar.setVisibility(View.VISIBLE);
+        apiService.getMovies("id.asc", 100).enqueue(new Callback<List<Movie>>() {
+            @Override
+            public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    allMovies = response.body();
+                    filterMoviesByDate();
+                } else {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(ChooseMovieActivity.this, "Không tải được phim từ máy chủ", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Movie>> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(ChooseMovieActivity.this, "Lỗi kết nối máy chủ", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void filterMoviesByDate() {
+        if (allMovies == null || allMovies.isEmpty()) {
+            return;
+        }
+
         progressBar.setVisibility(View.VISIBLE);
         rvMovieList.setVisibility(View.GONE);
         layoutEmpty.setVisibility(View.GONE);
@@ -192,28 +214,50 @@ public class ChooseMovieActivity extends AppCompatActivity {
         String gteDate = "gte." + yyyyMMdd + "T00:00:00";
         String lteDate = "lte." + yyyyMMdd + "T23:59:59";
 
-        apiService.getMoviesPlayingOnDate(gteDate, lteDate).enqueue(new Callback<List<Movie>>() {
+        List<Showtime> accumulatedShowtimes = new ArrayList<>();
+        fetchShowtimesPage(0, gteDate, lteDate, accumulatedShowtimes);
+    }
+
+    private void fetchShowtimesPage(int offset, String gteDate, String lteDate, List<Showtime> accumulated) {
+        int limit = 1000;
+        String range = offset + "-" + (offset + limit - 1);
+        apiService.getShowtimesByDateRangePaginated(range, gteDate, lteDate).enqueue(new Callback<List<Showtime>>() {
             @Override
-            public void onResponse(Call<List<Movie>> call, Response<List<Movie>> response) {
-                progressBar.setVisibility(View.GONE);
+            public void onResponse(Call<List<Showtime>> call, Response<List<Showtime>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    filteredMovies.clear();
-                    filteredMovies.addAll(response.body());
-                    updateMovieUi();
+                    List<Showtime> chunk = response.body();
+                    accumulated.addAll(chunk);
+                    if (chunk.size() == limit) {
+                        fetchShowtimesPage(offset + limit, gteDate, lteDate, accumulated);
+                    } else {
+                        processShowtimes(accumulated);
+                    }
                 } else {
-                    filteredMovies.clear();
-                    updateMovieUi();
+                    processShowtimes(accumulated);
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Movie>> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-                filteredMovies.clear();
-                updateMovieUi();
-                Toast.makeText(ChooseMovieActivity.this, "Lỗi tải phim", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<List<Showtime>> call, Throwable t) {
+                processShowtimes(accumulated);
             }
         });
+    }
+
+    private void processShowtimes(List<Showtime> showtimes) {
+        progressBar.setVisibility(View.GONE);
+        Set<Integer> activeMovieIds = new HashSet<>();
+        for (Showtime st : showtimes) {
+            activeMovieIds.add(st.getMovieId());
+        }
+
+        filteredMovies.clear();
+        for (Movie m : allMovies) {
+            if (activeMovieIds.contains(m.getId())) {
+                filteredMovies.add(m);
+            }
+        }
+        updateMovieUi();
     }
 
     private void updateMovieUi() {

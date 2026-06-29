@@ -91,8 +91,30 @@
         android:clipToPadding="false"
         android:paddingTop="8dp"
         android:paddingBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintTop_toBottomOf="@id/divider"
         tools:listitem="@layout/item_cinema_showtime" />
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_nav"
+        android:elevation="16dp"
+        android:minHeight="64dp"
+        android:paddingTop="4dp"
+        app:itemActiveIndicatorStyle="@style/MovieActiveIndicator.BottomNav"
+        app:itemIconSize="24dp"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemRippleColor="#18FFFFFF"
+        app:itemTextAppearanceActive="@style/MovieTextAppearance.BottomNav.Active"
+        app:itemTextAppearanceInactive="@style/MovieTextAppearance.BottomNav.Inactive"
+        app:itemTextColor="@color/nav_item_color"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

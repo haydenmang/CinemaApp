@@ -15,14 +15,17 @@ public interface ApiService {
             @Query("limit") int limit
     );
 
-    @GET("movies?select=*,showtimes!inner(id)")
-    Call<List<Movie>> getMoviesPlayingOnDate(
-            @Query("showtimes.start_time") String gteDate,
-            @Query("showtimes.start_time") String lteDate
-    );
-
     @GET("movies")
     Call<List<Movie>> getMovieById(@Query("id") String idFilter); // id=eq.1
+
+    @GET("showtimes")
+    Call<List<Showtime>> getShowtimesByDateRangePaginated(
+            @Header("Range") String range,
+            @Query("start_time") String gteDate,
+            @Query("start_time") String lteDate
+    );
+
+
 
 
 
