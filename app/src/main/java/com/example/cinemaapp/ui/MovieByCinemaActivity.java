@@ -59,13 +59,17 @@ public class MovieByCinemaActivity extends AppCompatActivity {
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
         adapter = new MovieByCinemaAdapter();
         adapter.setOnShowtimeClickListener((movie, showtime) -> {
-            Intent intent = new Intent(this, RoomSelectionActivity.class);
+            Intent intent = new Intent(this, com.example.cinemaapp.SeatSelectionActivity.class);
             intent.putExtra("movie_title", movie.getTitle());
-            // showtime.getStartTime() chứa chuỗi dạng yyyy-MM-dd'T'HH:mm:ss nếu từ DB
             intent.putExtra("showtime", showtime.getStartTime());
             intent.putExtra("showtime_id", showtime.getId());
             intent.putExtra("cinema_name", cinemaName);
             intent.putExtra("cinema_address", getIntent().getStringExtra("cinema_address"));
+            if (showtime.room != null) {
+                intent.putExtra("room_name", showtime.room.name);
+                intent.putExtra("room_type", showtime.room.roomType);
+            }
+            intent.putExtra("seat_price", (long) showtime.getPrice());
             startActivity(intent);
         });
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
@@ -185,6 +189,12 @@ public class MovieByCinemaActivity extends AppCompatActivity {
         Map<Integer, List<Showtime>> movieShowtimes = new HashMap<>();
         for (Showtime st : allShowtimes) {
             if (roomIds.contains(st.getRoomId())) {
+                for (Room r : cinemaRooms) {
+                    if (r.id == st.getRoomId()) {
+                        st.room = r;
+                        break;
+                    }
+                }
                 if (!movieShowtimes.containsKey(st.getMovieId())) {
                     movieShowtimes.put(st.getMovieId(), new ArrayList<>());
                 }

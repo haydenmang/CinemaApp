@@ -71,6 +71,11 @@ public class SeatSelectionActivity extends AppCompatActivity {
             }
         }
 
+        String roomName = getIntent().getStringExtra("room_name");
+        if (roomName != null) {
+            ((TextView) findViewById(R.id.tvShowtime)).append("  •  " + roomName);
+        }
+
         // Hiển thị giá vé
         ((TextView) findViewById(R.id.tvShowtime)).append("  •  Thường: " + formatPrice(seatPrice) + "đ, VIP: " + formatPrice(vipPrice) + "đ");
 

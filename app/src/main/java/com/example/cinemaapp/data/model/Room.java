@@ -10,4 +10,7 @@ public class Room {
     
     @SerializedName("cinemas")
     public Cinema cinema;
+    
+    @SerializedName("room_type")
+    public String roomType;
 }
