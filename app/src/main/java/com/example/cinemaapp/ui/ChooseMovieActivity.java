@@ -74,8 +74,8 @@ public class ChooseMovieActivity extends AppCompatActivity {
     private void setupSystemBars() {
         Window window = getWindow();
         WindowCompat.setDecorFitsSystemWindows(window, false);
-        window.setStatusBarColor(Color.parseColor("#141C38"));
-        window.setNavigationBarColor(Color.parseColor("#0C1020"));
+        window.setStatusBarColor(Color.parseColor("#000000"));
+        window.setNavigationBarColor(Color.parseColor("#000000"));
         WindowCompat.getInsetsController(window, window.getDecorView())
                 .setAppearanceLightStatusBars(false);
     }

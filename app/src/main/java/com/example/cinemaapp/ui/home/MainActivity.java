@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
     private void setupSystemBars() {
         Window window = getWindow();
         WindowCompat.setDecorFitsSystemWindows(window, false);
-        window.setStatusBarColor(Color.parseColor("#141C38"));
-        window.setNavigationBarColor(Color.parseColor("#0C1020"));
+        window.setStatusBarColor(Color.parseColor("#000000"));
+        window.setNavigationBarColor(Color.parseColor("#000000"));
         WindowCompat.getInsetsController(window, window.getDecorView())
                 .setAppearanceLightStatusBars(false);
     }
@@ -386,14 +386,18 @@ public class MainActivity extends AppCompatActivity {
         if (isDangChieu) {
             tabDangChieu.setTextColor(Color.WHITE);
             tabDangChieu.setTypeface(null, android.graphics.Typeface.BOLD);
-            tabSapChieu.setTextColor(Color.parseColor("#8A95A5"));
+            tabDangChieu.setBackgroundResource(R.drawable.bg_pill_selected);
+            tabSapChieu.setTextColor(Color.parseColor("#8B949E"));
             tabSapChieu.setTypeface(null, android.graphics.Typeface.NORMAL);
+            tabSapChieu.setBackgroundResource(0);
             moveTabIndicator(true, true);
         } else {
-            tabDangChieu.setTextColor(Color.parseColor("#8A95A5"));
+            tabDangChieu.setTextColor(Color.parseColor("#8B949E"));
             tabDangChieu.setTypeface(null, android.graphics.Typeface.NORMAL);
+            tabDangChieu.setBackgroundResource(0);
             tabSapChieu.setTextColor(Color.WHITE);
             tabSapChieu.setTypeface(null, android.graphics.Typeface.BOLD);
+            tabSapChieu.setBackgroundResource(R.drawable.bg_pill_selected);
             moveTabIndicator(false, true);
         }
     }

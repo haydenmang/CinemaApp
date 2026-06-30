@@ -4,8 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:layout_marginHorizontal="3dp"
-    android:paddingVertical="6dp"
+    android:layout_marginHorizontal="4dp"
+    android:paddingVertical="8dp"
+    android:background="@drawable/bg_pill_track"
     android:foreground="?attr/selectableItemBackgroundBorderless"
     android:clickable="true"
     android:focusable="true">
@@ -14,10 +15,10 @@
         android:id="@+id/tvDayName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:letterSpacing="0.06"
-        android:textStyle="bold"
-        android:textColor="#666666" />
+        android:textSize="11sp"
+        android:letterSpacing="0.05"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/text_secondary" />
 
     <TextView
         android:id="@+id/tvDayNum"
@@ -25,8 +26,8 @@
         android:layout_height="38dp"
         android:gravity="center"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#AAAAAA"
-        android:layout_marginTop="5dp" />
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/text_primary"
+        android:layout_marginTop="6dp" />
 
 </LinearLayout>

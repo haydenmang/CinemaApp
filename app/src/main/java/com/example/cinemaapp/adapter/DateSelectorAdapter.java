@@ -57,15 +57,13 @@ public class DateSelectorAdapter extends RecyclerView.Adapter<DateSelectorAdapte
         holder.tvDayNum.setText(DAY_NUM_FMT.format(cal.getTime()));
 
         if (isSelected) {
-            holder.tvDayName.setTextColor(0xFFE50914);
-            holder.tvDayNum.setTextColor(0xFFFFFFFF);
+            holder.tvDayName.setTextColor(0xFF00E5FF);
+            holder.tvDayNum.setTextColor(0xFFF8F9FA);
             holder.tvDayNum.setBackgroundResource(R.drawable.bg_date_selected);
-            holder.itemView.setBackgroundColor(0xFF2A2A2A);
         } else {
-            holder.tvDayName.setTextColor(0xFFAAAAAA);
-            holder.tvDayNum.setTextColor(0xFFAAAAAA);
-            holder.tvDayNum.setBackgroundColor(0x00000000);
-            holder.itemView.setBackgroundColor(0x00000000);
+            holder.tvDayName.setTextColor(0xFF8B949E);
+            holder.tvDayNum.setTextColor(0xFFF8F9FA);
+            holder.tvDayNum.setBackgroundResource(0);
         }
 
         holder.itemView.setOnClickListener(v -> {

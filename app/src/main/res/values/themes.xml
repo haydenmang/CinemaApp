@@ -11,7 +11,7 @@
         <item name="boxCornerRadiusTopEnd">16dp</item>
         <item name="boxCornerRadiusBottomStart">16dp</item>
         <item name="boxCornerRadiusBottomEnd">16dp</item>
-        <item name="boxStrokeColor">@color/accent_gold</item>
+        <item name="boxStrokeColor">@color/aurora_cyan</item>
         <item name="boxStrokeWidth">0dp</item>
         <item name="boxStrokeWidthFocused">1dp</item>
         <item name="hintTextColor">#99FFFFFF</item>

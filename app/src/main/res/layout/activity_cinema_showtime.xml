@@ -1,116 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0D0D0D">
+    android:background="@drawable/bg_aurora_main">
 
-    <!-- Toolbar -->
+    <!-- Edge-to-Edge Banner -->
+    <FrameLayout
+        android:id="@+id/bannerFrame"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgMovieBanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cinema_showtime_banner"
+            tools:ignore="ContentDescription" />
+
+        <!-- Fade gradient từ dưới lên để ăn khớp với nền -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bg_fade_bottom" />
+    </FrameLayout>
+
+    <!-- Toolbar trong suốt nổi trên Banner -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#161616"
+        android:background="@android:color/transparent"
         app:elevation="0dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Back"
             android:src="@android:drawable/ic_menu_revert"
-            android:padding="4dp"
-            app:tint="#E50914" />
+            android:padding="12dp"
+            app:tint="@color/text_primary" />
 
         <TextView
             android:id="@+id/tvMovieTitleHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="RẠP &amp; SUẤT CHIẾU"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:letterSpacing="0.08"
+            android:text="CHỌN SUẤT CHIẾU"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.05"
             tools:ignore="HardcodedText" />
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Banner với gradient overlay phía dưới -->
-    <FrameLayout
-        android:id="@+id/bannerFrame"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toTopOf="@id/rvDateSelector"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintHeight_percent="0.22">
-
-        <ImageView
-            android:id="@+id/ivMovieBanner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="false"
-            android:contentDescription="Movie Banner"
-            android:scaleType="centerCrop"
-            android:src="@drawable/my_banner" />
-
-        <!-- Gradient mờ dần từ dưới lên -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_overlay" />
-
-    </FrameLayout>
-
-    <!-- Date selector -->
+    <!-- Chọn Ngày -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDateSelector"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:background="#161616"
+        android:layout_height="80dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
         app:layout_constraintTop_toBottomOf="@id/bannerFrame"
         tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:orientation="horizontal" />
-
-    <!-- Divider -->
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#252525"
-        app:layout_constraintTop_toBottomOf="@id/rvDateSelector" />
 
     <!-- Danh sách rạp -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCinemaList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#0D0D0D"
         android:clipToPadding="false"
-        android:paddingTop="8dp"
-        android:paddingBottom="16dp"
+        android:paddingHorizontal="4dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="24dp"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-        app:layout_constraintTop_toBottomOf="@id/divider"
-        tools:listitem="@layout/item_cinema_showtime" />
+        app:layout_constraintTop_toBottomOf="@id/rvDateSelector" />
 
-    <!-- Bottom Navigation -->
+    <!-- Floating Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_bottom_nav"
-        android:elevation="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_floating_nav"
+        android:elevation="12dp"
         android:minHeight="64dp"
-        android:paddingTop="4dp"
         app:itemActiveIndicatorStyle="@style/MovieActiveIndicator.BottomNav"
         app:itemIconSize="24dp"
-        app:itemIconTint="@color/nav_item_color"
+        app:itemIconTint="@color/text_primary"
         app:itemRippleColor="#18FFFFFF"
         app:itemTextAppearanceActive="@style/MovieTextAppearance.BottomNav.Active"
         app:itemTextAppearanceInactive="@style/MovieTextAppearance.BottomNav.Inactive"
-        app:itemTextColor="@color/nav_item_color"
+        app:itemTextColor="@color/text_primary"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

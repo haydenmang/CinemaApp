@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="movie_bg_main">#121212</color>
-    <color name="movie_bg_card">#1E1E1E</color>
-    <color name="movie_bg_poster_surface">#0E1428</color>
-    <color name="movie_brand_accent">#E50914</color>
-    <color name="movie_app_bar_bg">#141C38</color>
-    <color name="movie_btn_book_start">#D8CDB4</color>
-    <color name="movie_btn_book_end">#A89572</color>
-    <color name="movie_btn_book_text">#1A1520</color>
-    <color name="movie_nav_active">#D8CDB4</color>
-    <color name="movie_nav_inactive">#5C6478</color>
-    <color name="movie_nav_indicator">#33D8CDB4</color>
-    <color name="movie_text_white">#FFFFFF</color>
+    <!-- MÀU THEME ĐÃ CHUYỂN SANG ĐEN & ĐỎ -->
+    <color name="movie_bg_main">@color/bg_midnight_blue</color>
+    <color name="movie_bg_card">@color/glass_bg_medium</color>
+    <color name="movie_bg_poster_surface">@color/glass_bg_light</color>
+    <color name="movie_brand_accent">@color/accent_red</color>
+    <color name="movie_app_bar_bg">@color/bg_midnight_blue</color>
+    <color name="movie_btn_book_start">@color/button_gradient_start</color>
+    <color name="movie_btn_book_end">@color/button_gradient_end</color>
+    <color name="movie_btn_book_text">@color/text_primary</color>
+    <color name="movie_nav_active">@color/accent_red</color>
+    <color name="movie_nav_inactive">@color/text_secondary</color>
+    <color name="movie_nav_indicator">#33E50914</color>
+    <color name="movie_text_white">@color/text_primary</color>
 
     <!-- Aliases for booking drawables (no conflict with CinemaApp) -->
-    <color name="bg_poster_surface">#0E1428</color>
-    <color name="brand_accent">#E50914</color>
-    <color name="btn_book_start">#D8CDB4</color>
-    <color name="btn_book_end">#A89572</color>
-    <color name="btn_book_text">#1A1520</color>
-    <color name="nav_active">#D8CDB4</color>
-    <color name="nav_inactive">#5C6478</color>
-    <color name="nav_indicator">#33D8CDB4</color>
-    <color name="text_white">#FFFFFF</color>
+    <color name="bg_poster_surface">@color/glass_bg_light</color>
+    <color name="brand_accent">@color/accent_red</color>
+    <color name="btn_book_start">@color/button_gradient_start</color>
+    <color name="btn_book_end">@color/button_gradient_end</color>
+    <color name="btn_book_text">@color/text_primary</color>
+    <color name="nav_active">@color/accent_red</color>
+    <color name="nav_inactive">@color/text_secondary</color>
+    <color name="nav_indicator">#33E50914</color>
+    <color name="text_white">@color/text_primary</color>
 </resources>

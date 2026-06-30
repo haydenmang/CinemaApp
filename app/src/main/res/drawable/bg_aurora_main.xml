@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Nền không gian sâu thẳm -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/bg_midnight_blue" />
+        </shape>
+    </item>
+
+    <!-- Quầng sáng cực quang Xanh (Cyan) ở góc trên bên trái -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:centerX="0.0"
+                android:centerY="0.0"
+                android:endColor="#00000000"
+                android:gradientRadius="450dp"
+                android:startColor="#1AE50914"
+                android:type="radial" />
+        </shape>
+    </item>
+
+    <!-- Quầng sáng cực quang Tím (Magenta) ở phần giữa bên phải -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:centerX="1.0"
+                android:centerY="0.6"
+                android:endColor="#00000000"
+                android:gradientRadius="500dp"
+                android:startColor="#14B80710"
+                android:type="radial" />
+        </shape>
+    </item>
+
+    <!-- Ánh sáng nhạt dưới cùng (tạo cảm giác không gian mờ ảo) -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:centerX="0.3"
+                android:centerY="1.0"
+                android:endColor="#00000000"
+                android:gradientRadius="350dp"
+                android:startColor="#0CE50914"
+                android:type="radial" />
+        </shape>
+    </item>
+
+</layer-list>

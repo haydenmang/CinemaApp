@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:text="CinemaApp"
                 android:textSize="34sp"
-                android:textColor="#E74C3C"
+                android:textColor="@color/accent_red"
                 android:textStyle="bold"
                 android:letterSpacing="0.05"
                 android:layout_marginTop="16dp" />
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:text="Đăng nhập để tiếp tục"
                 android:textSize="14sp"
-                android:textColor="#E74C3C"
+                android:textColor="@color/accent_red"
                 android:alpha="0.7"
                 android:letterSpacing="0.02"
                 android:layout_marginTop="6dp"
@@ -87,14 +87,14 @@
                     android:hint="Số điện thoại"
                     style="@style/RoundedInput"
                     app:startIconDrawable="@android:drawable/ic_menu_call"
-                    app:startIconTint="#E74C3C"
+                    app:startIconTint="@color/accent_red"
                     android:layout_marginBottom="16dp">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="phone"
-                        android:textColor="#FFFFFF"
+        android:textColor="@color/text_primary"
                         android:textSize="15sp"
                         android:paddingTop="18dp"
                         android:paddingBottom="18dp" />
@@ -106,15 +106,15 @@
                     android:hint="Mật khẩu"
                     style="@style/RoundedInput"
                     app:startIconDrawable="@android:drawable/ic_lock_idle_lock"
-                    app:startIconTint="#E74C3C"
+                    app:startIconTint="@color/accent_red"
                     app:passwordToggleEnabled="true"
-                    app:passwordToggleTint="#E74C3C">
+                    app:passwordToggleTint="@color/accent_red">
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:textColor="#FFFFFF"
+        android:textColor="@color/text_primary"
                         android:textSize="15sp"
                         android:paddingTop="18dp"
                         android:paddingBottom="18dp" />
@@ -124,7 +124,7 @@
                     android:id="@+id/tvError"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FF6B6B"
+                    android:textColor="@color/accent_red"
                     android:textSize="13sp"
                     android:visibility="gone"
                     android:layout_marginTop="8dp" />
@@ -149,7 +149,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Chưa có tài khoản?  "
-                    android:textColor="#B8FFFFFF"
+                    android:textColor="@color/text_secondary"
                     android:textSize="14sp" />
 
                 <TextView
@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Đăng ký"
-                    android:textColor="#FF6B6B"
+                    android:textColor="@color/accent_red"
                     android:textStyle="bold"
                     android:textSize="14sp" />
             </LinearLayout>

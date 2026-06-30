@@ -31,7 +31,7 @@
             android:contentDescription="Back"
             android:src="@drawable/ic_arrow_back"
             android:padding="4dp"
-            app:tint="#E50914" />
+            app:tint="@color/accent_red" />
 
         <TextView
             android:id="@+id/tvTitleHeader"
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Không có suất chiếu"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/text_primary"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginTop="12dp" />
@@ -94,7 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ngày này hiện chưa có lịch chiếu phim nào"
-            android:textColor="#777777"
+            android:textColor="@color/text_secondary"
             android:textSize="13sp"
             android:layout_marginTop="6dp" />
 

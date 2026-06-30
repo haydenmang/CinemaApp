@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F7F9FC"
+    android:background="@color/bg_midnight_blue"
     tools:context=".ProfileActivity">
 
     <androidx.core.widget.NestedScrollView
@@ -79,7 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Khách"
-                    android:textColor="#202124"
+                    android:textColor="@color/text_primary"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="#E8F0FE"
+                    app:cardBackgroundColor="@color/glass_bg_heavy"
                     app:cardCornerRadius="6dp"
                     app:cardElevation="0dp"/>
             </LinearLayout>
@@ -107,7 +107,7 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:layout_marginEnd="8dp"
-                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardBackgroundColor="@color/glass_bg_medium"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="2dp">
 
@@ -121,12 +121,12 @@
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:src="@android:drawable/ic_menu_slideshow"
-                            app:tint="#FF3D00"/>
+                            app:tint="@color/accent_red"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Đặt Vé Theo Phim"
-                            android:textColor="#3C4043"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:layout_marginTop="8dp"/>
@@ -139,7 +139,7 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:layout_marginStart="8dp"
-                    app:cardBackgroundColor="#FFFFFF"
+                    app:cardBackgroundColor="@color/glass_bg_medium"
                     app:cardCornerRadius="16dp"
                     app:cardElevation="2dp">
 
@@ -153,12 +153,12 @@
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:src="@android:drawable/ic_dialog_map"
-                            app:tint="#2962FF"/>
+                            app:tint="@color/accent_red"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Đặt Vé Theo Rạp"
-                            android:textColor="#3C4043"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:layout_marginTop="8dp"/>
@@ -172,7 +172,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="#FFFFFF"
+                app:cardBackgroundColor="@color/glass_bg_medium"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="2dp">
 
@@ -201,13 +201,13 @@
                             <ImageView
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:src="@drawable/ic_menuu"
-                                app:tint="#5F6368"/>
+                                android:src="@drawable/ic_home"
+                                app:tint="@color/text_primary"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Trang chủ"
-                                android:textColor="#5F6368"
+                                android:textColor="@color/text_primary"
                                 android:textSize="12sp"
                                 android:layout_marginTop="10dp"/>
                         </LinearLayout>
@@ -223,13 +223,13 @@
                             <ImageView
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:src="@drawable/ic_cinema_pin"
-                                app:tint="#5F6368"/>
+                                android:src="@drawable/ic_theater"
+                                app:tint="@color/text_primary"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Rạp"
-                                android:textColor="#5F6368"
+                                android:textColor="@color/text_primary"
                                 android:textSize="12sp"
                                 android:layout_marginTop="10dp"/>
                         </LinearLayout>
@@ -245,13 +245,13 @@
                             <ImageView
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:src="@android:drawable/btn_star"
-                                app:tint="#5F6368"/>
+                                android:src="@android:drawable/btn_star_big_off"
+                                app:tint="@color/text_primary"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Rạp đặc biệt"
-                                android:textColor="#5F6368"
+                                android:textColor="@color/text_primary"
                                 android:textSize="12sp"
                                 android:layout_marginTop="10dp"/>
                         </LinearLayout>
@@ -275,12 +275,12 @@
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
                                 android:src="@drawable/ic_ticket"
-                                app:tint="#5F6368"/>
+                                app:tint="@color/text_primary"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Vé của tôi"
-                                android:textColor="#5F6368"
+                                android:textColor="@color/text_primary"
                                 android:textSize="12sp"
                                 android:layout_marginTop="10dp"/>
                         </LinearLayout>
@@ -295,13 +295,13 @@
                             <ImageView
                                 android:layout_width="28dp"
                                 android:layout_height="28dp"
-                                android:src="@android:drawable/ic_menu_sort_by_size"
-                                app:tint="#5F6368"/>
+                                android:src="@drawable/ic_movie"
+                                app:tint="@color/text_primary"/>
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Đổi ưu đãi"
-                                android:textColor="#5F6368"
+                                android:textColor="@color/text_primary"
                                 android:textSize="12sp"
                                 android:layout_marginTop="10dp"/>
                         </LinearLayout>
@@ -322,7 +322,7 @@
                 android:layout_height="55dp"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="#FFEAEA"
+                app:cardBackgroundColor="@color/glass_bg_medium"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="0dp">
 
@@ -330,7 +330,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Đăng xuất"
-                    android:textColor="#D32F2F"
+                    android:textColor="@color/accent_red"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:gravity="center"/>
@@ -340,7 +340,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="HDM CINEMA"
-                android:textColor="#BDBDBD"
+                android:textColor="@color/text_secondary"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:gravity="center"

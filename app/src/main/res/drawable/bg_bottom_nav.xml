@@ -3,24 +3,16 @@
 
     <item>
         <shape android:shape="rectangle">
-            <gradient
-                android:angle="90"
-                android:endColor="#00000000"
-                android:startColor="#18000000"
-                android:type="linear" />
-        </shape>
-    </item>
-
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="#CC0C1020" />
+            <!-- Nền mờ cho Bottom Nav -->
+            <solid android:color="#99060810" />
         </shape>
     </item>
 
     <item android:gravity="top">
         <shape android:shape="rectangle">
             <size android:height="1dp" />
-            <solid android:color="#2E3654" />
+            <!-- Viền sáng nhẹ ngăn cách -->
+            <solid android:color="@color/glass_border_dim" />
         </shape>
     </item>
 

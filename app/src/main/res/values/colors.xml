@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- MÀU CƠ BẢN CỦA THEME -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bg_dark">#050505</color>
-    <color name="primary_purple">#C0392B</color>
-    <color name="accent_gold">#E74C3C</color>
-    <color name="text_primary">#FFFFFF</color>
-    <color name="text_secondary">#B3FFFFFF</color>
-    <color name="error">#FF6B6B</color>
-    <color name="stroke_gold">#C0392B</color>
-    <color name="bg_input">#050505</color>
-    <color name="bg_card">#050505</color>
-    <color name="chip_bg">#E50914</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- BẢNG MÀU CINEMATIC NOIR -->
+    <!-- Nền không gian sâu thẳm -->
+    <color name="bg_midnight_blue">#000000</color> <!-- True Black -->
+    <color name="bg_darker">#050505</color>
+    
+    <!-- Ánh sáng tinh tế (Đỏ Crimson) -->
+    <color name="aurora_cyan">#E50914</color>   <!-- Netflix Red -->
+    <color name="aurora_magenta">#B80710</color> <!-- Dark Red -->
+
+    <!-- Màu nhấn chính (Accent) -->
+    <color name="accent_cyan">#E50914</color>
+    <color name="accent_red">#E50914</color>
+
+    <!-- MÀU BỀ MẶT (SURFACE) -->
+    <color name="glass_bg_heavy">#1F1F1F</color>     <!-- Bề mặt nổi -->
+    <color name="glass_bg_medium">#141414</color>    <!-- Bề mặt Card cơ bản -->
+    <color name="glass_bg_light">#0A0A0A</color>     <!-- Bề mặt chìm -->
+    
+    <color name="glass_border">#2A2A2A</color>       <!-- Viền mỏng -->
+    <color name="glass_border_dim">#1A1A1A</color>   <!-- Viền phân cách mờ -->
+
+    <!-- MÀU CHỮ (TYPOGRAPHY) -->
+    <color name="text_primary">#F3F4F6</color>         
+    <color name="text_secondary">#9CA3AF</color>       
+    <color name="text_tertiary">#6E7681</color>
+
+    <!-- Trạng thái, Button -->
+    <color name="button_gradient_start">#E50914</color> <!-- Đỏ rực -->
+    <color name="button_gradient_end">#FF2E3F</color>   <!-- Đỏ sáng hơn một chút -->
+    <color name="button_disabled">#2A2A2A</color>
+    
+    <!-- Kế thừa từ thiết kế cũ để tránh lỗi biên dịch -->
+    <color name="colorPrimary">@color/bg_midnight_blue</color>
+    <color name="colorPrimaryDark">@color/bg_darker</color>
+    <color name="colorAccent">@color/accent_cyan</color>
+    
+    <color name="bg_dark">@color/bg_midnight_blue</color>
+    <color name="bg_card">@color/glass_bg_medium</color>
+    <color name="bg_input">@color/glass_bg_heavy</color>
+    <color name="chip_bg">@color/glass_bg_heavy</color>
 </resources>

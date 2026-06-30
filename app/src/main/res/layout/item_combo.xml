@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="12dp"
-    app:cardBackgroundColor="#1A1A2E"
+    app:cardBackgroundColor="@color/glass_bg_medium"
     app:cardCornerRadius="12dp"
     app:cardElevation="4dp">
 
@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Combo Name"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="4dp" />
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Combo Description"
-                android:textColor="#AAAAAA"
+                android:textColor="@color/text_secondary"
                 android:textSize="12sp"
                 android:layout_marginBottom="4dp" />
 
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0đ"
-                android:textColor="#E8B84B"
+                android:textColor="@color/accent_red"
                 android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -61,9 +61,9 @@
                 android:id="@+id/btnMinus"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:background="#333355"
+                android:background="@color/glass_bg_heavy"
                 android:text="-"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:padding="0dp" />
 
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="0"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -81,9 +81,9 @@
                 android:id="@+id/btnPlus"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:background="#E8B84B"
+                android:background="@color/accent_red"
                 android:text="+"
-                android:textColor="#0D0D12"
+                android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:padding="0dp" />
         </LinearLayout>
