@@ -11,6 +11,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.example.cinemaapp.data.api.ApiService;
+import com.example.cinemaapp.data.api.SupabaseClient;
+import com.example.cinemaapp.data.model.BookingSeat;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import android.util.Log;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,6 +55,7 @@ public class SeatSelectionActivity extends AppCompatActivity {
 
         String movieTitle = getIntent().getStringExtra("movie_title");
         String showtime = getIntent().getStringExtra("showtime");
+        int showtimeId = getIntent().getIntExtra("showtime_id", -1);
         seatPrice = getIntent().getLongExtra("seat_price", 85000);
         vipPrice = seatPrice + 35000;
 
@@ -65,8 +75,13 @@ public class SeatSelectionActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tvShowtime)).append("  •  Thường: " + formatPrice(seatPrice) + "đ, VIP: " + formatPrice(vipPrice) + "đ");
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
-        buildSeatMap();
-        updateBottomBar();
+        
+        if (showtimeId != -1) {
+            loadBookedSeats(showtimeId);
+        } else {
+            buildSeatMap();
+            updateBottomBar();
+        }
 
         ((AppCompatButton) findViewById(R.id.btnConfirm)).setOnClickListener(v -> {
             if (selectedSeats.isEmpty()) {
@@ -90,12 +105,39 @@ public class SeatSelectionActivity extends AppCompatActivity {
                     Intent intent = new Intent(this, ComboActivity.class);
                     intent.putExtra("movie_title", getIntent().getStringExtra("movie_title"));
                     intent.putExtra("showtime", getIntent().getStringExtra("showtime"));
+                    intent.putExtra("showtime_id", showtimeId);
                     intent.putExtra("cinema_name", getIntent().getStringExtra("cinema_name"));
                     intent.putExtra("cinema_address", getIntent().getStringExtra("cinema_address"));
                     intent.putStringArrayListExtra("selected_seats", new ArrayList<>(sorted));
                     intent.putExtra("total_price", total);
                     startActivity(intent);
                 }).start();
+        });
+    }
+
+    private void loadBookedSeats(int showtimeId) {
+        ApiService apiService = SupabaseClient.getClient().create(ApiService.class);
+        apiService.getBookedSeatsByShowtime("eq." + showtimeId).enqueue(new Callback<List<BookingSeat>>() {
+            @Override
+            public void onResponse(Call<List<BookingSeat>> call, Response<List<BookingSeat>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    for (BookingSeat bs : response.body()) {
+                        bookedSeats.add(bs.seatNumber);
+                    }
+                }
+                runOnUiThread(() -> {
+                    buildSeatMap();
+                    updateBottomBar();
+                });
+            }
+            @Override
+            public void onFailure(Call<List<BookingSeat>> call, Throwable t) {
+                Log.e("SeatSelection", "Failed to load booked seats", t);
+                runOnUiThread(() -> {
+                    buildSeatMap();
+                    updateBottomBar();
+                });
+            }
         });
     }
 

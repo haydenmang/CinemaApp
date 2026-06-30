@@ -71,7 +71,9 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
         btnBookNowDetail.setOnClickListener(v -> {
-            // TODO: logic đặt vé
+            android.content.Intent intent = new android.content.Intent(MovieDetailActivity.this, com.example.cinemaapp.ui.CinemaShowtimeActivity.class);
+            intent.putExtra("MOVIE_ID", movie.getId());
+            startActivity(intent);
         });
 
         tvDetailTitle.setText(movie.getTitle());

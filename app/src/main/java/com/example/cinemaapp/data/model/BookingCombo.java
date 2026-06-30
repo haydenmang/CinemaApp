@@ -2,12 +2,11 @@ package com.example.cinemaapp.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class BookingSeat {
+public class BookingCombo {
     public Integer id;
     @SerializedName("booking_id")
     public int bookingId;
-    @SerializedName("showtime_id")
-    public int showtimeId;
-    @SerializedName("seat_number")
-    public String seatNumber;
+    @SerializedName("combo_id")
+    public int comboId;
+    public int quantity;
 }

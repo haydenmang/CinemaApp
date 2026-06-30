@@ -3,7 +3,7 @@ package com.example.cinemaapp.data.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Payment {
-    public int id;
+    public Integer id;
     @SerializedName("booking_id")
     public int bookingId;
     public double amount;

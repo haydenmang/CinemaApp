@@ -84,8 +84,19 @@ public interface ApiService {
     @GET("bookings")
     Call<List<Booking>> getBookingsByUser(@Query("user_id") String userIdFilter);
 
+    @GET("bookings")
+    Call<List<Booking>> getBookingsByUserWithDetails(
+        @Query("user_id") String userIdFilter,
+        @Query("select") String selectQuery,
+        @Query("order") String order
+    );
+
     @POST("bookings")
     Call<Void> createBooking(@Body Booking booking);
+
+    @POST("bookings")
+    @Headers("Prefer: return=representation")
+    Call<List<Booking>> createBookingReturning(@Body Booking booking);
 
     // ===== BOOKING SEATS =====
     @GET("booking_seats")
@@ -100,4 +111,11 @@ public interface ApiService {
 
     @GET("payments")
     Call<List<Payment>> getPaymentByBooking(@Query("booking_id") String bookingIdFilter);
+    // ===== COMBOS =====
+    @GET("combos")
+    Call<List<Combo>> getCombos();
+
+    // ===== BOOKING COMBOS =====
+    @POST("booking_combos")
+    Call<Void> createBookingCombo(@Body BookingCombo bookingCombo);
 }

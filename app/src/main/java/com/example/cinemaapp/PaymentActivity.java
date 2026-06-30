@@ -14,6 +14,20 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
+import android.widget.Toast;
+import com.example.cinemaapp.data.api.ApiService;
+import com.example.cinemaapp.data.api.SupabaseClient;
+import com.example.cinemaapp.data.model.Booking;
+import com.example.cinemaapp.data.model.BookingSeat;
+import com.example.cinemaapp.data.model.Payment;
+import com.example.cinemaapp.data.model.User;
+import com.example.cinemaapp.utils.SessionManager;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import java.util.List;
+import android.util.Log;
+
 public class PaymentActivity extends AppCompatActivity {
 
     private static final long NORMAL_PRICE = 85000;
@@ -25,6 +39,11 @@ public class PaymentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
+
+        SessionManager sessionManager = new SessionManager(this);
+        User currentUser = sessionManager.getUserSession();
+        int userId = currentUser != null ? currentUser.id : -1;
+        int showtimeId = getIntent().getIntExtra("showtime_id", -1);
 
         ArrayList<String> seats = getIntent().getStringArrayListExtra("selected_seats");
         String movieTitle   = getIntent().getStringExtra("movie_title");
@@ -75,6 +94,14 @@ public class PaymentActivity extends AppCompatActivity {
         long finalTotal = total;
         ArrayList<String> finalSeats = seats;
         ((AppCompatButton) findViewById(R.id.btnConfirm)).setOnClickListener(v -> {
+            if (userId == -1 || showtimeId == -1) {
+                Toast.makeText(this, "Lỗi: Không tìm thấy người dùng hoặc suất chiếu!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            v.setEnabled(false);
+            ((AppCompatButton) v).setText("ĐANG XỬ LÝ...");
+
             RadioGroup rg = findViewById(R.id.rgPayment);
             String method;
             int checked = rg.getCheckedRadioButtonId();
@@ -82,16 +109,90 @@ public class PaymentActivity extends AppCompatActivity {
             else if (checked == R.id.rbVnpay) method = "VNPay";
             else                              method = "Chuyển khoản";
 
-            Intent intent = new Intent(this, TicketActivity.class);
-            intent.putExtra("movie_title", movieTitle);
-            intent.putExtra("showtime", showtime);
-            intent.putExtra("cinema_name", getIntent().getStringExtra("cinema_name"));
-            intent.putExtra("cinema_address", getIntent().getStringExtra("cinema_address"));
-            intent.putExtra("combo_desc", comboDesc);
-            intent.putStringArrayListExtra("selected_seats", finalSeats);
-            intent.putExtra("total_price", finalTotal);
-            intent.putExtra("payment_method", method);
-            startActivity(intent);
+            ApiService apiService = SupabaseClient.getClient().create(ApiService.class);
+            Booking booking = new Booking();
+            booking.userId = userId;
+            booking.showtimeId = showtimeId;
+            booking.totalPrice = finalTotal;
+            booking.status = "SUCCESS";
+
+            apiService.createBookingReturning(booking).enqueue(new Callback<List<Booking>>() {
+                @Override
+                public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
+                    if (response.isSuccessful() && response.body() != null && !response.body().isEmpty()) {
+                        int bookingId = response.body().get(0).id;
+                        
+                        // Create BookingSeats
+                        for (String seatNumber : finalSeats) {
+                            BookingSeat bs = new BookingSeat();
+                            bs.bookingId = bookingId;
+                            bs.showtimeId = showtimeId;
+                            bs.seatNumber = seatNumber;
+                            apiService.createBookingSeat(bs).enqueue(new Callback<Void>() {
+                                @Override public void onResponse(Call<Void> c, Response<Void> res) {}
+                                @Override public void onFailure(Call<Void> c, Throwable t) {}
+                            });
+                        }
+                        
+                        // Create BookingCombos
+                        ArrayList<Integer> comboIds = getIntent().getIntegerArrayListExtra("combo_ids");
+                        ArrayList<Integer> comboQtys = getIntent().getIntegerArrayListExtra("combo_qtys");
+                        if (comboIds != null && comboQtys != null) {
+                            for (int i = 0; i < comboIds.size(); i++) {
+                                com.example.cinemaapp.data.model.BookingCombo bc = new com.example.cinemaapp.data.model.BookingCombo();
+                                bc.bookingId = bookingId;
+                                bc.comboId = comboIds.get(i);
+                                bc.quantity = comboQtys.get(i);
+                                apiService.createBookingCombo(bc).enqueue(new Callback<Void>() {
+                                    @Override public void onResponse(Call<Void> c, Response<Void> res) {}
+                                    @Override public void onFailure(Call<Void> c, Throwable t) {}
+                                });
+                            }
+                        }
+                        
+                        // Create Payment
+                        Payment p = new Payment();
+                        p.bookingId = bookingId;
+                        p.amount = finalTotal;
+                        p.method = method;
+                        p.status = "SUCCESS";
+                        p.transactionCode = "CGV-" + System.currentTimeMillis();
+                        apiService.createPayment(p).enqueue(new Callback<Void>() {
+                            @Override public void onResponse(Call<Void> c, Response<Void> res) {}
+                            @Override public void onFailure(Call<Void> c, Throwable t) {}
+                        });
+
+                        runOnUiThread(() -> {
+                            Intent intent = new Intent(PaymentActivity.this, TicketActivity.class);
+                            intent.putExtra("movie_title", movieTitle);
+                            intent.putExtra("showtime", showtime);
+                            intent.putExtra("cinema_name", getIntent().getStringExtra("cinema_name"));
+                            intent.putExtra("cinema_address", getIntent().getStringExtra("cinema_address"));
+                            intent.putExtra("combo_desc", comboDesc);
+                            intent.putStringArrayListExtra("selected_seats", finalSeats);
+                            intent.putExtra("total_price", finalTotal);
+                            intent.putExtra("payment_method", method);
+                            startActivity(intent);
+                            finish();
+                        });
+                    } else {
+                        runOnUiThread(() -> {
+                            Toast.makeText(PaymentActivity.this, "Lỗi tạo vé!", Toast.LENGTH_SHORT).show();
+                            v.setEnabled(true);
+                            ((AppCompatButton) v).setText("XÁC NHẬN THANH TOÁN");
+                        });
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Booking>> call, Throwable t) {
+                    runOnUiThread(() -> {
+                        Toast.makeText(PaymentActivity.this, "Lỗi kết nối!", Toast.LENGTH_SHORT).show();
+                        v.setEnabled(true);
+                        ((AppCompatButton) v).setText("XÁC NHẬN THANH TOÁN");
+                    });
+                }
+            });
         });
     }
 }

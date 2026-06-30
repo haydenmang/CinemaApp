@@ -31,6 +31,7 @@ public class RoomSelectionActivity extends AppCompatActivity {
 
         String movieTitle = getIntent().getStringExtra("movie_title");
         String showtime = getIntent().getStringExtra("showtime");
+        int showtimeId = getIntent().getIntExtra("showtime_id", -1);
         String cinemaName = getIntent().getStringExtra("cinema_name");
         String cinemaAddress = getIntent().getStringExtra("cinema_address");
 
@@ -49,10 +50,10 @@ public class RoomSelectionActivity extends AppCompatActivity {
 
         findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        buildRoomList(movieTitle, showtime, cinemaName, cinemaAddress);
+        buildRoomList(movieTitle, showtime, showtimeId, cinemaName, cinemaAddress);
     }
 
-    private void buildRoomList(String movieTitle, String showtime, String cinemaName, String cinemaAddress) {
+    private void buildRoomList(String movieTitle, String showtime, int showtimeId, String cinemaName, String cinemaAddress) {
         LinearLayout container = findViewById(R.id.roomContainer);
         int margin = dpToPx(12);
 
@@ -125,6 +126,7 @@ public class RoomSelectionActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, SeatSelectionActivity.class);
                 intent.putExtra("movie_title", movieTitle);
                 intent.putExtra("showtime", showtime);
+                intent.putExtra("showtime_id", showtimeId);
                 intent.putExtra("cinema_name", cinemaName);
                 intent.putExtra("cinema_address", cinemaAddress);
                 intent.putExtra("room_type", room.name);

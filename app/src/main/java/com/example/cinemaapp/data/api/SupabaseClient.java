@@ -19,13 +19,16 @@ public class SupabaseClient {
             OkHttpClient client = new OkHttpClient.Builder().addInterceptor(new Interceptor() {
                 @Override
                 public Response intercept(Chain chain) throws IOException {
-                    Request newRequest = chain.request().newBuilder()
+                    Request.Builder builder = chain.request().newBuilder()
                             .addHeader("apikey", SupabaseConfig.API_KEY)
                             .addHeader("Authorization", "Bearer " + SupabaseConfig.API_KEY)
-                            .addHeader("Content-Type", "application/json")
-                            .addHeader("Prefer", "return=minimal")
-                            .build();
-                    return chain.proceed(newRequest);
+                            .addHeader("Content-Type", "application/json");
+                            
+                    if (chain.request().header("Prefer") == null) {
+                        builder.addHeader("Prefer", "return=minimal");
+                    }
+                    
+                    return chain.proceed(builder.build());
                 }
             }).build();
 

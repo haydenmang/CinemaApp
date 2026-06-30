@@ -18,6 +18,12 @@ public class Showtime {
     @SerializedName("price")
     private double price;
 
+    @SerializedName("movies")
+    public Movie movie;
+
+    @SerializedName("rooms")
+    public Room room;
+
     // Getters và Setters
     public int getId() { return id; }
     public int getMovieId() { return movieId; }

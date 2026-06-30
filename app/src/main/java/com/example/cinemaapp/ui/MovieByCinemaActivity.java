@@ -63,6 +63,7 @@ public class MovieByCinemaActivity extends AppCompatActivity {
             intent.putExtra("movie_title", movie.getTitle());
             // showtime.getStartTime() chứa chuỗi dạng yyyy-MM-dd'T'HH:mm:ss nếu từ DB
             intent.putExtra("showtime", showtime.getStartTime());
+            intent.putExtra("showtime_id", showtime.getId());
             intent.putExtra("cinema_name", cinemaName);
             intent.putExtra("cinema_address", getIntent().getStringExtra("cinema_address"));
             startActivity(intent);
