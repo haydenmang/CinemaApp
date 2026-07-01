@@ -71,7 +71,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> finish());
         btnBookNowDetail.setOnClickListener(v -> {
-            android.content.Intent intent = new android.content.Intent(MovieDetailActivity.this, com.example.cinemaapp.ui.CinemaShowtimeActivity.class);
+            android.content.Intent intent = new android.content.Intent(MovieDetailActivity.this, com.example.cinemaapp.ui.booking.CinemaShowtimeActivity.class);
             intent.putExtra("MOVIE_ID", movie.getId());
             startActivity(intent);
         });

@@ -1,4 +1,4 @@
-package com.example.cinemaapp.ui;
+package com.example.cinemaapp.ui.booking;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.ui.home.MainActivity;
-import com.example.cinemaapp.ui.ChooseMovieActivity;
+import com.example.cinemaapp.ui.booking.ChooseMovieActivity;
 import com.example.cinemaapp.adapter.CinemaShowtimeAdapter;
 import com.example.cinemaapp.adapter.DateSelectorAdapter;
 import com.example.cinemaapp.data.api.ApiService;
@@ -109,7 +109,7 @@ public class CinemaShowtimeActivity extends AppCompatActivity {
             } else if (id == R.id.nav_theaters) {
                 return true;
             } else if (id == R.id.nav_profile) {
-                Intent intent = new Intent(CinemaShowtimeActivity.this, com.example.cinemaapp.ProfileActivity.class);
+                Intent intent = new Intent(CinemaShowtimeActivity.this, com.example.cinemaapp.ui.user.ProfileActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;

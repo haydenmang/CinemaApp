@@ -1,4 +1,4 @@
-package com.example.cinemaapp.ui;
+package com.example.cinemaapp.ui.booking;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -135,7 +135,7 @@ public class ChooseMovieActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             } else if (id == R.id.nav_profile) {
-                Intent intent = new Intent(ChooseMovieActivity.this, com.example.cinemaapp.ProfileActivity.class);
+                Intent intent = new Intent(ChooseMovieActivity.this, com.example.cinemaapp.ui.user.ProfileActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 startActivity(intent);
                 return true;

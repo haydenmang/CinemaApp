@@ -1,4 +1,6 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui.user;
+
+import com.example.cinemaapp.R;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -60,16 +62,16 @@ public class ProfileActivity extends AppCompatActivity {
 
         ImageView imgBell = findViewById(R.id.imgBell);
         imgBell.setOnClickListener(view -> {
-            startActivity(new Intent(ProfileActivity.this, NotificationActivity.class));
+            startActivity(new Intent(ProfileActivity.this, com.example.cinemaapp.ui.home.NotificationActivity.class));
         });
 
         findViewById(R.id.menuMovie).setOnClickListener(view -> {
-            Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.ChooseMovieActivity.class);
+            Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.booking.ChooseMovieActivity.class);
             startActivity(intent);
         });
 
         findViewById(R.id.menuCinema).setOnClickListener(view -> {
-            Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.CinemaShowtimeActivity.class);
+            Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.booking.CinemaShowtimeActivity.class);
             startActivity(intent);
         });
 
@@ -81,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.menuTheater).setOnClickListener(view -> {
-            Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.CinemaShowtimeActivity.class);
+            Intent intent = new Intent(ProfileActivity.this, com.example.cinemaapp.ui.booking.CinemaShowtimeActivity.class);
             startActivity(intent);
         });
 

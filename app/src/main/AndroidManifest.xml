@@ -29,19 +29,19 @@
         android:theme="@style/Theme.CinemaApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".MyTicketActivity"
+            android:name=".ui.user.MyTicketActivity"
             android:exported="false" />
         <activity
-            android:name=".MovieListActivity"
+            android:name=".ui.movie.MovieListActivity"
             android:exported="false" />
         <activity
-            android:name=".NotificationActivity"
+            android:name=".ui.home.NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".ui.user.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".ui.user.SettingActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.SplashActivity"
@@ -54,7 +54,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.CinemaShowtimeActivity"
+            android:name=".ui.booking.CinemaShowtimeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.LoginActivity"
@@ -73,26 +73,26 @@
 
 
         <activity
-            android:name=".SeatSelectionActivity"
+            android:name=".ui.booking.SeatSelectionActivity"
             android:exported="false" />
 
         <activity
-            android:name=".ui.MovieByCinemaActivity"
+            android:name=".ui.booking.MovieByCinemaActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ChooseMovieActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".ComboActivity"
+            android:name=".ui.booking.ChooseMovieActivity"
             android:exported="false" />
 
         <activity
-            android:name=".PaymentActivity"
+            android:name=".ui.booking.ComboActivity"
             android:exported="false" />
 
         <activity
-            android:name=".TicketActivity"
+            android:name=".ui.booking.PaymentActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.booking.TicketActivity"
             android:exported="false" />
     </application>
 

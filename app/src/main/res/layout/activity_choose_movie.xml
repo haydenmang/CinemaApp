@@ -30,8 +30,7 @@
             android:layout_height="32dp"
             android:contentDescription="Back"
             android:src="@drawable/ic_arrow_back"
-            android:padding="4dp"
-            app:tint="@color/accent_red" />
+            android:padding="4dp"             app:tint="@color/accent_red" />
 
         <TextView
             android:id="@+id/tvTitleHeader"

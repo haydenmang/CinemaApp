@@ -1,4 +1,6 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui.user;
+
+import com.example.cinemaapp.R;
 
 import android.os.Bundle;
 import android.widget.ImageView;

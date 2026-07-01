@@ -1,4 +1,6 @@
-package com.example.cinemaapp;
+package com.example.cinemaapp.ui.booking;
+
+import com.example.cinemaapp.R;
 
 import android.content.Intent;
 import android.os.Bundle;

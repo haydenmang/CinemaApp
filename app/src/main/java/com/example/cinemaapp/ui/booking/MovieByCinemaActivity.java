@@ -1,4 +1,4 @@
-package com.example.cinemaapp.ui;
+package com.example.cinemaapp.ui.booking;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.example.cinemaapp.R;
-import com.example.cinemaapp.RoomSelectionActivity;
+import com.example.cinemaapp.ui.booking.RoomSelectionActivity;
 import android.util.Log;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -59,7 +59,7 @@ public class MovieByCinemaActivity extends AppCompatActivity {
         RecyclerView rvMovies = findViewById(R.id.rvMovies);
         adapter = new MovieByCinemaAdapter();
         adapter.setOnShowtimeClickListener((movie, showtime) -> {
-            Intent intent = new Intent(this, com.example.cinemaapp.SeatSelectionActivity.class);
+            Intent intent = new Intent(this, com.example.cinemaapp.ui.booking.SeatSelectionActivity.class);
             intent.putExtra("movie_title", movie.getTitle());
             intent.putExtra("showtime", showtime.getStartTime());
             intent.putExtra("showtime_id", showtime.getId());

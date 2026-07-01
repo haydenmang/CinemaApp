@@ -19,7 +19,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.cinemaapp.R;
-import com.example.cinemaapp.TicketActivity;
+import com.example.cinemaapp.ui.booking.TicketActivity;
 import com.example.cinemaapp.data.model.Booking;
 import com.example.cinemaapp.data.model.BookingSeat;
 

@@ -23,7 +23,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.cinemaapp.R;
 import com.example.cinemaapp.data.repository.MovieCatalogRepository;
-import com.example.cinemaapp.ui.CinemaShowtimeActivity;
+import com.example.cinemaapp.ui.booking.CinemaShowtimeActivity;
 import com.example.cinemaapp.ui.movie.adapter.BannerAdapter;
 import com.example.cinemaapp.ui.movie.adapter.MoviePagerAdapter;
 import com.example.cinemaapp.ui.movie.model.MovieItem;
@@ -215,13 +215,13 @@ public class MainActivity extends AppCompatActivity {
             }
             pauseAutoScrolls();
             if (id == R.id.nav_movies) {
-                android.content.Intent intent = new android.content.Intent(MainActivity.this, com.example.cinemaapp.ui.ChooseMovieActivity.class);
+                android.content.Intent intent = new android.content.Intent(MainActivity.this, com.example.cinemaapp.ui.booking.ChooseMovieActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_theaters) {
                 android.content.Intent intent = new android.content.Intent(MainActivity.this, CinemaShowtimeActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_profile) {
-                android.content.Intent intent = new android.content.Intent(MainActivity.this, com.example.cinemaapp.ProfileActivity.class);
+                android.content.Intent intent = new android.content.Intent(MainActivity.this, com.example.cinemaapp.ui.user.ProfileActivity.class);
                 startActivity(intent);
             }
             return true;
